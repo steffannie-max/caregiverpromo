@@ -154,7 +154,7 @@ const Index = () => {
         <div id="slide-4">
           <VideoSection
             title="Maid (Netflix, Episode 1)"
-            videoUrl="https://www.netflix.com/watch/81166770"
+            videoUrl="https://www.youtube.com/watch?v=MMIBPTNmDoI"
             timestamp="Social worker meeting scene"
             questions={[
               {
@@ -190,7 +190,7 @@ const Index = () => {
         <div id="slide-5">
           <VideoSection
             title="Claudine (1974)"
-            videoUrl="https://www.youtube.com/watch?v=claudine1974"
+            videoUrl="https://www.youtube.com/watch?v=ZOPy3FC-lUk"
             timestamp="1:26 - Welfare/social worker home visit"
             questions={[
               {
@@ -226,7 +226,7 @@ const Index = () => {
         <div id="slide-6">
           <VideoSection
             title="The Florida Project (2017)"
-            videoUrl="https://www.youtube.com/watch?v=floridaproject2017"
+            videoUrl="https://www.youtube.com/watch?v=bvZV09_0p9k"
             timestamp="1:43 - Social worker visit to Halley in motel"
             questions={[
               {
