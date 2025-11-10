@@ -156,34 +156,58 @@ const Index = () => {
           title="Interview with Dr. Bryson"
           variant="gradient"
         >
-          <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="space-y-8 max-w-4xl mx-auto">
             <p className="text-xl text-center mb-8">
               Dr. Bryson analyzed the same dataset twice – once in 2016 and again in 2025 – using different interpretive frameworks.
             </p>
             
+            {/* Section 1: Returning to the Data */}
             <div className="bg-card p-8 rounded-lg border border-border">
-              <h3 className="text-2xl font-semibold mb-4 text-primary">Interview Questions</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-primary">Section 1: Returning to the Data</h3>
               <ol className="space-y-4 list-decimal list-inside text-left">
                 <li className="text-base">You analyzed the same dataset 20 years apart using different interpretive frameworks. What made you return to this data, and what did you see differently?</li>
                 <li className="text-base">How did your own perspective as a researcher change between 2016 and 2025?</li>
                 <li className="text-base">Can you walk us through a specific example where the "care capital" lens in 2016 highlighted something different than the "poverty governance" lens in 2025?</li>
+              </ol>
+              
+              <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+                <p className="text-sm font-semibold text-primary">
+                  [Video Upload Space: Dr. Bryson&apos;s Responses - Section 1]
+                </p>
+              </div>
+            </div>
+
+            {/* Section 2: Care Capital Framework */}
+            <div className="bg-card p-8 rounded-lg border border-border">
+              <h3 className="text-2xl font-semibold mb-4 text-primary">Section 2: Care Capital Framework</h3>
+              <ol className="space-y-4 list-decimal list-inside text-left" start={4}>
                 <li className="text-base">Can you explain Bourdieu&apos;s concept of capital and how you extended it to "care capital"?</li>
                 <li className="text-base">What kinds of capital were mothers expected to demonstrate to be seen as "good enough" parents?</li>
                 <li className="text-base">How would a positivist researcher approach this data differently? What would they miss?</li>
                 <li className="text-base">When you say meanings are "socially constructed," what does that look like in child welfare practice?</li>
+              </ol>
+              
+              <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+                <p className="text-sm font-semibold text-primary">
+                  [Video Upload Space: Dr. Bryson&apos;s Responses - Section 2]
+                </p>
+              </div>
+            </div>
+
+            {/* Section 3: Poverty Governance & Theoretical Frameworks */}
+            <div className="bg-card p-8 rounded-lg border border-border">
+              <h3 className="text-2xl font-semibold mb-4 text-primary">Section 3: Poverty Governance & Theoretical Frameworks</h3>
+              <ol className="space-y-4 list-decimal list-inside text-left" start={8}>
                 <li className="text-base">In your 2025 article, you use a "poverty governance" lens. What does this framework reveal?</li>
                 <li className="text-base">How do child welfare policies govern poverty rather than protect children?</li>
                 <li className="text-base">What advice would you give to new researchers about choosing theoretical lenses?</li>
               </ol>
-            </div>
-            
-            <div className="text-center mt-8 p-6 bg-muted/50 rounded-lg">
-              <p className="text-lg font-semibold text-primary">
-                [Video Recording: Dr. Bryson&apos;s Responses]
-              </p>
-              <p className="text-muted-foreground mt-2">
-                This space is reserved for Dr. Bryson&apos;s interview responses
-              </p>
+              
+              <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+                <p className="text-sm font-semibold text-primary">
+                  [Video Upload Space: Dr. Bryson&apos;s Responses - Section 3]
+                </p>
+              </div>
             </div>
           </div>
         </PresentationSlide>
