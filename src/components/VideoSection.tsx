@@ -23,6 +23,17 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
     setResponses(prev => ({ ...prev, [questionId]: value }));
   };
 
+  // Extract YouTube video ID from URL
+  const getYouTubeEmbedUrl = (url: string) => {
+    const videoIdMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+    if (videoIdMatch && videoIdMatch[1]) {
+      return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
+    }
+    return url;
+  };
+
+  const embedUrl = getYouTubeEmbedUrl(videoUrl);
+
   return (
     <section className="min-h-screen py-16 px-6 md:px-12 bg-muted/30">
       <div className="max-w-6xl mx-auto">
@@ -33,18 +44,14 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
           </p>
         )}
         
-        <div className="aspect-video bg-black rounded-lg mb-8 flex items-center justify-center text-muted-foreground">
-          <div className="text-center p-8">
-            <p className="mb-2">Video: {title}</p>
-            <a 
-              href={videoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 underline font-semibold"
-            >
-              Open video in new tab
-            </a>
-          </div>
+        <div className="aspect-video bg-black rounded-lg mb-8 overflow-hidden">
+          <iframe
+            src={embedUrl}
+            title={title}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
 
         <div className="grid gap-6">
