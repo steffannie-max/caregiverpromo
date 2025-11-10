@@ -22,7 +22,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Week 7: Interpretivism/Constructivism</h1>
           <div className="flex gap-2">
-            {[0, 1, 2, 3, 4, 5, 6].map((idx) => (
+            {[0, 1, 2, 3, 4, 5, 6, 7].map((idx) => (
               <Button
                 key={idx}
                 variant={currentSlide === idx ? "default" : "outline"}
@@ -257,6 +257,41 @@ const Index = () => {
             ]}
           />
         </div>
+
+        {/* Slide 8: References */}
+        <PresentationSlide
+          id="slide-7"
+          title="References"
+        >
+          <div className="space-y-4 text-left max-w-4xl mx-auto">
+            <div className="space-y-3">
+              <p className="text-sm md:text-base">
+                Bryson, S. A. (2016). A credit check of maternal assets: Low-income Black mothers' navigation of child welfare services. <em>The British Journal of Social Work</em>, 46(6), 1558-1574.
+              </p>
+              <p className="text-sm md:text-base">
+                Bryson, S. A. (2025). "Oh, this one has money": Policing, not protecting families. <em>Child Abuse & Neglect</em>, 159, 107119.
+              </p>
+              <p className="text-sm md:text-base">
+                Crotty, M. (2015). <em>The foundations of social research: Meaning and perspective in the research process</em>. SAGE Publications.
+              </p>
+            </div>
+            
+            <div className="mt-8 pt-6 border-t border-border">
+              <h3 className="text-xl font-semibold mb-3">Films Referenced</h3>
+              <div className="space-y-2">
+                <p className="text-sm md:text-base">
+                  <em>Maid</em> (2021). Netflix series, Episode 1.
+                </p>
+                <p className="text-sm md:text-base">
+                  <em>Claudine</em> (1974). Directed by John Berry.
+                </p>
+                <p className="text-sm md:text-base">
+                  <em>The Florida Project</em> (2017). Directed by Sean Baker.
+                </p>
+              </div>
+            </div>
+          </div>
+        </PresentationSlide>
       </div>
     </div>
   );
