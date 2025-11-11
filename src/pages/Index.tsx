@@ -23,6 +23,7 @@ const Index = () => {
   const [interviewVideos, setInterviewVideos] = useState<{ [key: string]: any }>({});
   const [slideVideos, setSlideVideos] = useState<{ [key: number]: string }>({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -90,6 +91,18 @@ const Index = () => {
     localStorage.setItem('currentSlide', index.toString());
     const element = document.getElementById(`slide-${index}`);
     element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const nextSlide = () => {
+    if (currentSlide < 9) {
+      scrollToSlide(currentSlide + 1);
+    }
+  };
+
+  const previousSlide = () => {
+    if (currentSlide > 0) {
+      scrollToSlide(currentSlide - 1);
+    }
   };
 
   const openPresenterMode = () => {
@@ -257,8 +270,25 @@ Thank you, and see you next week!`
 
   return (
     <div className="relative">
+      {/* Start Button Overlay */}
+      {!hasStarted && (
+        <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center">
+          <div className="text-center space-y-6">
+            <h1 className="text-4xl font-bold text-primary">Week 7: Interpretivism & Constructivism</h1>
+            <p className="text-xl text-muted-foreground">Click below to begin the presentation</p>
+            <Button 
+              size="lg" 
+              onClick={() => setHasStarted(true)}
+              className="text-lg px-8 py-6"
+            >
+              Start Presentation
+            </Button>
+          </div>
+        </div>
+      )}
+
       {/* Background Music Player */}
-      <BackgroundMusic currentSlide={currentSlide} />
+      {hasStarted && <BackgroundMusic currentSlide={currentSlide} />}
       
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -383,8 +413,37 @@ Thank you, and see you next week!`
       )}
 
       <div className="pt-16 relative">
+        {/* Student Navigation Controls */}
+        {!isAuthenticated && hasStarted && (
+          <div className="fixed bottom-6 right-6 z-50 flex gap-2">
+            <Button
+              size="lg"
+              variant="default"
+              onClick={previousSlide}
+              disabled={currentSlide === 0}
+              className="shadow-lg"
+            >
+              ← Previous
+            </Button>
+            <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center shadow-lg">
+              <span className="text-sm font-semibold">
+                Slide {currentSlide + 1} / 10
+              </span>
+            </div>
+            <Button
+              size="lg"
+              variant="default"
+              onClick={nextSlide}
+              disabled={currentSlide === 9}
+              className="shadow-lg"
+            >
+              Next →
+            </Button>
+          </div>
+        )}
+
         {/* Corner PIP Video Overlay */}
-        {slideVideos[currentSlide] && (
+        {slideVideos[currentSlide] && hasStarted && (
           <div className="fixed bottom-20 right-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
             <video
               key={currentSlide}
