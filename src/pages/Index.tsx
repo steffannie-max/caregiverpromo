@@ -768,109 +768,37 @@ Thank you, and see you next week!`
           </div>
         </PresentationSlide>
 
-        {/* Video Section 1: Maid */}
+        {/* Video Analysis Section */}
         <div id="slide-6">
           <VideoSection
-            title="Maid (Netflix, Episode 1)"
+            title="Video Analysis: Social Work in Practice"
             videoUrl="https://www.youtube.com/watch?v=MMIBPTNmDoI"
-            timestamp="Social worker meeting scene"
+            timestamp="⏩ Skip to key scene"
             questions={[
               {
-                id: "maid-interp",
+                id: "video-interp",
                 lens: "Interpretivist Lens",
                 text: "As researchers, how would our perspectives influence what we notice in this scene? How might two researchers interpret the same information differently?"
               },
               {
-                id: "maid-construct",
+                id: "video-construct",
                 lens: "Constructivist Lens",
-                text: "How does meaning change depending on who's observing? How might Alex's perspective differ from the social worker's? What social norms shape how we interpret what's happening?"
+                text: "How does meaning change depending on who's observing? What social norms shape how we interpret what's happening?"
               },
               {
-                id: "maid-posit",
+                id: "video-posit",
                 lens: "Positivist (Facts/Objective)",
                 text: "What's actually happening? What could you record as observable facts?"
               },
               {
-                id: "maid-capital",
+                id: "video-capital",
                 lens: "Capital (Resources/Advantages)",
-                text: "What resources or advantages does Alex have or lack? How might these affect how she's seen or how she navigates the situation?"
+                text: "What resources or advantages are present or lacking? How might these affect the situation and how it's perceived?"
               },
               {
-                id: "maid-gov",
+                id: "video-gov",
                 lens: "Poverty Governance (System/Rules)",
-                text: "How do rules, policies, or systems shape what's happening? What pressures are outside Alex's control?"
-              }
-            ]}
-          />
-        </div>
-
-        {/* Video Section 2: Claudine */}
-        <div id="slide-6">
-          <VideoSection
-            title="Claudine (1974)"
-            videoUrl="https://www.youtube.com/watch?v=ZOPy3FC-lUk"
-            timestamp="⏩ Skip to 1:26 - Welfare/social worker home visit"
-            questions={[
-              {
-                id: "claud-interp",
-                lens: "Interpretivist Lens",
-                text: "What 'truths' are highlighted or hidden depending on the lens? How do the characters' backgrounds influence how we interpret their actions?"
-              },
-              {
-                id: "claud-construct",
-                lens: "Constructivist Lens",
-                text: "How might the family's perspective or the researcher's perspective alter the interpretation of this home visit? What does 'appropriate home' mean in different contexts?"
-              },
-              {
-                id: "claud-posit",
-                lens: "Positivist (Facts/Objective)",
-                text: "What observable facts can be documented about the home and the interaction?"
-              },
-              {
-                id: "claud-capital",
-                lens: "Capital (Resources/Advantages)",
-                text: "What forms of capital (economic, social, cultural) are being assessed? What resources must Claudine demonstrate to be seen as a 'good mother'?"
-              },
-              {
-                id: "claud-gov",
-                lens: "Poverty Governance (System/Rules)",
-                text: "How does the welfare system shape this interaction? What rules govern this relationship?"
-              }
-            ]}
-          />
-        </div>
-
-        {/* Video Section 3: The Florida Project */}
-        <div id="slide-8">
-          <VideoSection
-            title="The Florida Project (2017)"
-            videoUrl="https://www.youtube.com/watch?v=bvZV09_0p9k"
-            timestamp="⏩ Skip to 1:43 - Social worker visit to Halley in motel"
-            questions={[
-              {
-                id: "florida-interp",
-                lens: "Interpretivist Lens",
-                text: "How might researchers from different backgrounds interpret this scene differently? What assumptions might shape our understanding?"
-              },
-              {
-                id: "florida-construct",
-                lens: "Constructivist Lens",
-                text: "How is the meaning of 'appropriate housing' socially constructed? How might living in a motel be interpreted differently by different observers?"
-              },
-              {
-                id: "florida-posit",
-                lens: "Positivist (Facts/Objective)",
-                text: "What are the observable, measurable facts about the living situation and the interaction?"
-              },
-              {
-                id: "florida-capital",
-                lens: "Capital (Resources/Advantages)",
-                text: "What economic, social, and cultural capital does Halley lack? How does this lack shape the interaction and assessment?"
-              },
-              {
-                id: "florida-gov",
-                lens: "Poverty Governance (System/Rules)",
-                text: "How do housing policies, child welfare rules, and economic systems create this situation? What structural factors are being individualized?"
+                text: "How do rules, policies, or systems shape what's happening? What pressures are outside individuals' control?"
               }
             ]}
           />
