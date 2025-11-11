@@ -419,7 +419,7 @@ Thank you, and see you next week!`
               size="lg"
               variant="default"
               onClick={previousSlide}
-              disabled={currentSlide === 0 || isPaused}
+              disabled={currentSlide === 0 || (isPaused && slideVideos[currentSlide] && currentSlide !== 5)}
               className="shadow-lg"
             >
               ← Prev
@@ -441,7 +441,7 @@ Thank you, and see you next week!`
               size="lg"
               variant="default"
               onClick={nextSlide}
-              disabled={currentSlide === 9 || isPaused}
+              disabled={currentSlide === 9 || (isPaused && slideVideos[currentSlide] && currentSlide !== 5)}
               className="shadow-lg"
             >
               Next →
