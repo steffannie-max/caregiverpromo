@@ -416,7 +416,7 @@ Thank you, and see you next week!`
       <div className="pt-16 relative">
         {/* Student Navigation Controls */}
         {!isAuthenticated && hasStarted && (
-          <div className="fixed bottom-6 right-6 z-50 flex gap-2">
+          <div className="fixed bottom-6 right-6 z-50 flex gap-3">
             <Button
               size="lg"
               variant="default"
@@ -424,19 +424,19 @@ Thank you, and see you next week!`
               disabled={currentSlide === 0 || isPaused}
               className="shadow-lg"
             >
-              ← Previous
+              ← Prev
             </Button>
             <Button
               size="lg"
-              variant={isPaused ? "default" : "outline"}
+              variant={isPaused ? "default" : "secondary"}
               onClick={() => setIsPaused(!isPaused)}
-              className="shadow-lg"
+              className="shadow-lg px-6"
             >
-              {isPaused ? <Play className="h-5 w-5" /> : <Pause className="h-5 w-5" />}
+              {isPaused ? "▶ Play" : "⏸ Pause"}
             </Button>
             <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center shadow-lg">
               <span className="text-sm font-semibold">
-                Slide {currentSlide + 1} / 10
+                {currentSlide + 1} / 10
               </span>
             </div>
             <Button

@@ -10,7 +10,7 @@ interface BackgroundMusicProps {
 
 export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState([3]); // Start at 3% volume
+  const [volume, setVolume] = useState([1.5]); // Start at 1.5% volume
   const [isPlaying, setIsPlaying] = useState(false);
   const [musicMap, setMusicMap] = useState<{ [key: number]: string }>({});
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,20 +54,20 @@ export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
     const musicUrl = musicMap[currentSlide];
     if (musicUrl && audioRef.current) {
       audioRef.current.src = musicUrl;
-      audioRef.current.volume = 0.03; // Start at 3%
+      audioRef.current.volume = 0.015; // Start at 1.5%
       audioRef.current.play().then(() => {
         setIsPlaying(true);
         
         // Fade out gradually over 20 seconds
         const fadeSteps = 200; // 200 steps
         const fadeInterval = 20000 / fadeSteps; // 20 seconds total
-        const volumeDecrement = 0.03 / fadeSteps;
+        const volumeDecrement = 0.015 / fadeSteps;
         
         let step = 0;
         const fade = setInterval(() => {
           step++;
           if (audioRef.current && step < fadeSteps) {
-            audioRef.current.volume = Math.max(0, 0.03 - (volumeDecrement * step));
+            audioRef.current.volume = Math.max(0, 0.015 - (volumeDecrement * step));
           } else {
             clearInterval(fade);
             if (audioRef.current) {
