@@ -10,6 +10,7 @@ import { Download, Play, Pause } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-critical-thinking.jpg";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -300,23 +301,35 @@ Thank you, and see you next week!`
 
       <div className="pt-16">
         {/* Slide 1: Title */}
-        <PresentationSlide
-          id="slide-0"
-          title="Interpretivism & Constructivism"
-          variant="gradient"
-        >
-          <div className="space-y-6">
-            <p className="text-2xl md:text-3xl font-semibold text-primary">
+        <section id="slide-0" className="min-h-screen relative flex items-center justify-center overflow-hidden">
+          {/* Hero Image Background */}
+          <div className="absolute inset-0">
+            <img 
+              src={heroImage} 
+              alt="Critical thinking and multiple perspectives" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background/95" />
+          </div>
+          
+          {/* Content */}
+          <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center space-y-8 animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-bold text-primary drop-shadow-lg">
+              Interpretivism & Constructivism
+            </h1>
+            <p className="text-3xl md:text-4xl font-semibold text-foreground drop-shadow-md">
               Understanding Research Through Different Lenses
             </p>
-            <p className="text-xl">
-              Week 7, November 11
-            </p>
-            <p className="text-muted-foreground">
-              Exploring how our perspectives shape what we see, interpret, and understand in social research
-            </p>
+            <div className="space-y-4 pt-4">
+              <p className="text-2xl text-foreground/90 drop-shadow">
+                Week 7, November 11
+              </p>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto drop-shadow">
+                Exploring how our perspectives shape what we see, interpret, and understand in social research
+              </p>
+            </div>
           </div>
-        </PresentationSlide>
+        </section>
 
         {/* Slide 2: Key Definitions */}
         <PresentationSlide
