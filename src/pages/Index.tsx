@@ -85,11 +85,13 @@ const Index = () => {
   };
 
   const speakerNotes = {
-    0: `Welcome everyone to Week 7. Today we're diving into Interpretivism and Constructivism – two research approaches that fundamentally change how we understand social work research.
+    0: `Hi everyone, and welcome to week seven. Today we'll explore Interpretivism and Constructivism; now, these two research approaches seem similar, but we'll discuss some of the nuances between them. We'll also discuss how these two research approaches fundamentally change how we understand social work research.
 
 The big idea here is this: different perspectives literally change what we see, what we notice, and what we understand. We're going to explore how the lens we use shapes everything – from what counts as 'data' to what we consider a 'problem' to what solutions we imagine.
 
-And we're going to practice. We'll watch some film clips together and practice looking through different lenses to see how the same scene reveals completely different insights.`,
+We'll hear from our esteemed Dr. Stephanie Bryson who will bring real-world examples from her groundbreaking research on child welfare systems and help us understand how changing our theoretical lens can reveal entirely different insights from the same data.
+
+And we're going to practice distinguishing between the concepts by viewing some film clips together and practice looking through different lenses to see how the same scene reveals completely different insights.`,
     1: `Let's start by level-setting with some key terms. I know definitions can feel dry, but these are actually really important because they shape how we think about research itself.
 
 First, Interpretivism. This is the approach that says: if we want to understand social action, we have to understand the meaning that people attach to their behavior. It's not enough to just observe what someone does – we need to understand what it means to them.
