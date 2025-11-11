@@ -337,6 +337,7 @@ Thank you, and see you next week!`
         {slideVideos[currentSlide] && (
           <div className="fixed bottom-20 right-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
             <video
+              key={currentSlide}
               src={slideVideos[currentSlide]}
               autoPlay
               loop
