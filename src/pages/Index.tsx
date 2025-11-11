@@ -9,11 +9,99 @@ import { useState } from "react";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showNotes, setShowNotes] = useState(false);
 
   const scrollToSlide = (index: number) => {
     setCurrentSlide(index);
     const element = document.getElementById(`slide-${index}`);
     element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const speakerNotes = {
+    0: `Welcome everyone to Week 7. Today we're diving into Interpretivism and Constructivism – two research approaches that fundamentally change how we understand social work research.
+
+The big idea here is this: different perspectives literally change what we see, what we notice, and what we understand. We're going to explore how the lens we use shapes everything – from what counts as 'data' to what we consider a 'problem' to what solutions we imagine.
+
+And we're going to practice. We'll watch some film clips together and practice looking through different lenses to see how the same scene reveals completely different insights.`,
+    1: `Let's start by level-setting with some key terms. I know definitions can feel dry, but these are actually really important because they shape how we think about research itself.
+
+First, Interpretivism. This is the approach that says: if we want to understand social action, we have to understand the meaning that people attach to their behavior. It's not enough to just observe what someone does – we need to understand what it means to them.
+
+So instead of just counting how many times a social worker visits a family, interpretivism asks: What does this visit mean to the family? What does it mean to the worker? How do their cultural contexts shape how they experience this interaction?
+
+Next, Constructivism. This takes it a step further. Constructivism says that all knowledge – and therefore all meaningful reality – is constructed through human practices and social interaction. Nothing is just objectively 'out there' waiting to be discovered. We create meaning together, through our interactions and our social contexts.
+
+Here's a concrete example: 'Messy home' isn't an objective fact. It's constructed through social norms, class expectations, and cultural values. What one person sees as 'messy,' another might see as 'lived-in' or perfectly normal. The meaning is constructed, not inherent.
+
+Finally, let's contrast this with Positivism – which many of us were trained in. Positivism says that objective truth and reality can be observed and measured through empirical, scientific methods. It focuses on observable facts and quantifiable data.
+
+So a positivist approach would record: number of dirty dishes, presence of cockroaches, times child was observed outside after 10pm. These are treated as objective, measurable facts. You can see how different that is from asking what 'messy' means in different contexts.`,
+    2: `Now I want to introduce two concepts from Dr. Bryson's research that we'll be discussing more in a moment.
+
+Care Capital – this is Dr. Bryson's extension of Bourdieu's social capital. She argues that mothers, especially low-income Black mothers, must accumulate specific resources – both material and symbolic – to be deemed 'good enough' by child welfare systems.
+
+It's not enough to love your children. You have to demonstrate that you have the right kind of house, the right kind of job, the right kind of appearance, the right emotional responses, the right social connections – all matching middle-class professional expectations.
+
+Think about that. Parenting competence gets judged not just on care, but on capital.
+
+Poverty Governance – this concept examines how systems of rules, policies, and institutional practices regulate, monitor, and control poor families. It looks at how poverty itself becomes a target of state intervention and surveillance.
+
+Here's what this looks like in practice: When a family's poverty – say, a messy home because mom is working 30 hours a week at minimum wage and can't keep up – when that poverty is treated as a parenting failure requiring child removal, rather than as a systemic issue requiring support... that's poverty governance.
+
+The system governs poverty by punishing poor families rather than addressing structural inequality.`,
+    3: `Alright, here's where it gets really interesting. The same 'data' – the same scene, the same interaction – produces completely different insights depending on which lens you use.
+
+With a Positivist lens, you ask: What are the observable facts? What can be measured or counted? What behaviors can be documented?
+
+With a Capital lens, you ask: What resources does this family have or lack? How do advantages and disadvantages shape these interactions? What capital is required to be seen as 'good enough'?
+
+With a Poverty Governance lens, you ask: What systems and policies shape this situation? How are rules applied differently by class? What's outside the family's control?
+
+Same situation. Three completely different sets of questions. Three completely different understandings of what's happening and what should be done about it.
+
+And this is why our theoretical frameworks matter so much. They're not just academic exercises – they literally determine what we see and what we miss.`,
+    4: `Now I'm really excited because Dr. Bryson has generously agreed to talk with us about these concepts and about her research.
+
+What's particularly fascinating about Dr. Bryson's work is that she analyzed the same dataset twice – once in 2016 and again in 2025 – using different interpretive frameworks. And she saw completely different things.
+
+This is interpretivism and constructivism in action: same data, different lens, different insights.
+
+Dr. Bryson, thank you so much for joining us.
+
+[PLAY DR. BRYSON INTERVIEW VIDEOS]
+
+Thank you so much, Dr. Bryson. That was incredibly helpful for understanding how our interpretive frameworks shape what we can see and understand.
+
+Now, let's practice. We're going to watch three short film clips, and for each one, we're going to practice looking through these different lenses.`,
+    5: `Okay, let's watch this clip from Maid. I'm going to play it, and then we'll pause and think through it using our different lenses.
+
+[PLAY VIDEO]
+
+Alright, let's pause here. Take a moment to reflect on what you just saw.
+
+Now, I want you to work through the questions on the screen. Think about:
+- What would you notice with an interpretivist lens? How would your own perspective shape what you see?
+- How does meaning change with a constructivist lens? What's being socially constructed here?
+- What are the observable facts from a positivist perspective?
+- Through a capital lens – what resources and advantages are at play?
+- And through a poverty governance lens – what systems and rules are shaping this interaction?
+
+Take a few minutes to jot down your thoughts. There are no right or wrong answers here – the goal is to practice noticing how different lenses reveal different things.`,
+    6: `Let's watch our second clip from Claudine. Remember to skip to 1:26 for the welfare/social worker home visit scene.
+
+[PLAY VIDEO - Skip to 1:26]
+
+Now let's work through our different lenses again. What do you notice this time? How do the questions change what you see in this scene?`,
+    7: `And now our final clip from The Florida Project. Skip to 1:43 for the social worker visit to Halley in the motel.
+
+[PLAY VIDEO - Skip to 1:43]
+
+Take your time with the analysis questions. Notice how each lens brings different aspects into focus.`,
+    8: `And that's it for today. I've included all our references here, including the three films we watched.
+
+The key takeaway: Your theoretical lens isn't just an academic choice – it fundamentally shapes what you can see, what you consider important, and what interventions you imagine.
+
+Thank you, and see you next week!`
   };
 
   return (
@@ -22,7 +110,15 @@ const Index = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Week 7: Interpretivism/Constructivism</h1>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
+            <Button
+              variant={showNotes ? "default" : "outline"}
+              size="sm"
+              onClick={() => setShowNotes(!showNotes)}
+              className="mr-2"
+            >
+              📝 {showNotes ? "Hide" : "Show"} Notes
+            </Button>
             {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((idx) => (
               <Button
                 key={idx}
@@ -36,6 +132,16 @@ const Index = () => {
           </div>
         </div>
       </nav>
+
+      {/* Speaker Notes Panel */}
+      {showNotes && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border max-h-64 overflow-y-auto">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <h3 className="text-sm font-semibold text-primary mb-2">Speaker Notes - Slide {currentSlide + 1}</h3>
+            <p className="text-sm text-foreground whitespace-pre-line">{speakerNotes[currentSlide as keyof typeof speakerNotes]}</p>
+          </div>
+        </div>
+      )}
 
       <div className="pt-16">
         {/* Slide 1: Title */}
