@@ -424,7 +424,7 @@ Thank you, and see you next week!`
               <div className="bg-secondary/10 p-6 rounded-lg border-2 border-secondary">
                 <h3 className="text-xl font-bold text-secondary mb-4">Interpretivism</h3>
                 <ul className="space-y-3 text-sm">
-                  <li><strong>Max Weber</strong> (VAHKS VAY-ber)<br />Early 1900s: <em>Verstehen</em> - understanding meanings</li>
+                  <li><strong>Max Weber</strong> (VAHKS VAY-ber)<br />Early 1900s: <em>Verstehen</em> (understanding from within) - grasping subjective meanings</li>
                   <li><strong>Alfred Schutz</strong> (AL-fred SHOOTS)<br />1930s-50s: Lived experience matters</li>
                   <li><strong>Key idea:</strong> Understand subjective meanings</li>
                 </ul>
