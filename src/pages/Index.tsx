@@ -150,17 +150,17 @@ Here's a concrete example: 'Messy home' isn't an objective fact. It's constructe
 Finally, let's contrast this with Positivism – which many of us were trained in. Positivism says that objective truth and reality can be observed and measured through empirical, scientific methods. It focuses on observable facts and quantifiable data.
 
 So a positivist approach would record: number of dirty dishes, presence of cockroaches, times child was observed outside after 10pm. These are treated as objective, measurable facts. You can see how different that is from asking what 'messy' means in different contexts.`,
-    2: `Now let's talk about where these ideas came from – the intellectual history and key thinkers who shaped these paradigms.
+    2: `Now let's talk about where these ideas came from – the intellectual history and key thinkers who shaped these paradigms (frameworks for understanding the world).
 
-Positivism emerged first in the 19th century with Auguste Comte, who coined the term. He believed society could be studied using the same scientific methods as the natural sciences. Later, the Vienna Circle and logical positivists like A.J. Ayer pushed this further. The idea was: if we can't measure it, observe it, or verify it empirically, it's not real knowledge.
+Positivism emerged first in the 19th century with Auguste Comte (oh-GOOST KOHNT), who coined the term. He believed society could be studied using the same scientific methods as the natural sciences. Later, the Vienna Circle and logical positivists (philosophers who believed only verifiable statements have meaning) like A.J. Ayer pushed this further. The idea was: if we can't measure it, observe it, or verify it empirically (through direct observation), it's not real knowledge.
 
-Interpretivism developed as a response to positivism. Max Weber, in the early 1900s, introduced the concept of Verstehen – understanding the subjective meanings people attach to their actions. He argued you can't study humans the same way you study rocks or chemicals because humans have intentions, meanings, and consciousness.
+Interpretivism developed as a response to positivism. Max Weber (VAHKS VAY-ber), in the early 1900s, introduced the concept of Verstehen (understanding from the inside) – understanding the subjective meanings people attach to their actions. He argued you can't study humans the same way you study rocks or chemicals because humans have intentions, meanings, and consciousness.
 
-Alfred Schutz built on Weber's work, bringing in phenomenology – the study of how people experience their lived world. Schutz argued that social reality is intersubjective – it's created through our shared understandings and taken-for-granted assumptions.
+Alfred Schutz (AL-fred SHOOTS) built on Weber's work, bringing in phenomenology (the study of lived experience and how people make sense of their world). Schutz argued that social reality is intersubjective (meaning it's shared and co-created between people) – it's created through our shared understandings and taken-for-granted assumptions.
 
-Then comes Constructivism, most famously articulated by Peter Berger and Thomas Luckmann in their 1966 book "The Social Construction of Reality." They showed how reality itself is socially constructed through human interaction, language, and institutions. What we take for granted as "just the way things are" is actually created and maintained through social processes.
+Then comes Constructivism, most famously articulated by Peter Berger (BAIR-ger) and Thomas Luckmann (LOOK-mahn) in their 1966 book "The Social Construction of Reality." They showed how reality itself is socially constructed through human interaction, language, and institutions. What we take for granted as "just the way things are" is actually created and maintained through social processes.
 
-Kenneth Gergen later extended this into social constructionism, emphasizing how knowledge is created through social processes and language. And thinkers like Michel Foucault showed how power shapes what counts as knowledge and truth.
+Kenneth Gergen (GER-gen) later extended this into social constructionism (the idea that knowledge is created through social processes and language), emphasizing how our conversations and cultural practices create what we know. And thinkers like Michel Foucault (mee-SHELL foo-KOH) showed how power shapes what counts as knowledge and truth.
 
 So these aren't just abstract academic theories – they represent fundamental disagreements about the nature of reality, knowledge, and how we can understand the social world.`,
     3: `Now I want to introduce two concepts from Dr. Bryson's research that we'll be discussing more in a moment.
