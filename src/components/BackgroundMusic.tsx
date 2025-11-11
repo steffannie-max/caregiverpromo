@@ -10,11 +10,11 @@ interface BackgroundMusicProps {
 
 export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState([30]); // Start at low volume
+  const [volume, setVolume] = useState([5]); // Start at 5% volume
   const [isPlaying, setIsPlaying] = useState(false);
   const [musicMap, setMusicMap] = useState<{ [key: number]: string }>({});
-  const [isReady, setIsReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     fetchMusic();
@@ -45,26 +45,48 @@ export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
   }, [volume]);
 
   useEffect(() => {
+    // Clear any existing fade timeout
+    if (fadeTimeoutRef.current) {
+      clearTimeout(fadeTimeoutRef.current);
+    }
+
     // Play music for specific slides if available
     const musicUrl = musicMap[currentSlide];
     if (musicUrl && audioRef.current) {
-      setIsReady(false);
       audioRef.current.src = musicUrl;
+      audioRef.current.volume = 0.05; // Start at 5%
       audioRef.current.play().then(() => {
         setIsPlaying(true);
-        // Signal that music has started and videos can play after delay
-        setTimeout(() => {
-          setIsReady(true);
-          window.dispatchEvent(new CustomEvent('musicReady'));
-        }, 3000); // 3 second delay before videos can start
+        
+        // Fade out after 20 seconds
+        fadeTimeoutRef.current = setTimeout(() => {
+          if (audioRef.current) {
+            const fadeInterval = setInterval(() => {
+              if (audioRef.current && audioRef.current.volume > 0.01) {
+                audioRef.current.volume = Math.max(0, audioRef.current.volume - 0.01);
+              } else {
+                clearInterval(fadeInterval);
+                if (audioRef.current) {
+                  audioRef.current.pause();
+                  setIsPlaying(false);
+                }
+              }
+            }, 100); // Fade over ~1 second
+          }
+        }, 20000); // 20 seconds
       });
     } else {
       setIsPlaying(false);
-      setIsReady(false);
       if (audioRef.current) {
         audioRef.current.pause();
       }
     }
+
+    return () => {
+      if (fadeTimeoutRef.current) {
+        clearTimeout(fadeTimeoutRef.current);
+      }
+    };
   }, [currentSlide, musicMap]);
 
   const toggleMute = () => {
