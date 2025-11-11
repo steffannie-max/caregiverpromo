@@ -773,55 +773,101 @@ Thank you, and see you next week!`
           <PresentationSlide
             title="Meet Dr. Bryson"
           >
-            <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
-              <div className="text-center space-y-4">
-                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center animate-scale-in">
-                  <span className="text-6xl">👨‍🏫</span>
-                </div>
-                <h3 className="text-3xl font-bold text-primary animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                  Your Guide to Critical Social Work Research
-                </h3>
+            {/* Film Frame Container */}
+            <div className="relative max-w-5xl mx-auto">
+              {/* Film Strip Border - Top */}
+              <div className="absolute -top-8 left-0 right-0 h-8 bg-gradient-to-r from-primary via-primary to-primary flex items-center justify-around">
+                {[...Array(20)].map((_, i) => (
+                  <div key={i} className="w-4 h-6 bg-background/90 rounded-sm"></div>
+                ))}
+              </div>
+              
+              {/* Film Strip Border - Bottom */}
+              <div className="absolute -bottom-8 left-0 right-0 h-8 bg-gradient-to-r from-primary via-primary to-primary flex items-center justify-around">
+                {[...Array(20)].map((_, i) => (
+                  <div key={i} className="w-4 h-6 bg-background/90 rounded-sm"></div>
+                ))}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mt-8">
-                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.3s" }}>
-                  <div className="text-4xl mb-4">🎯</div>
-                  <h4 className="text-xl font-semibold mb-2 text-foreground">Research Excellence</h4>
-                  <p className="text-muted-foreground">
-                    Dr. Bryson brings decades of experience in social work research, helping students understand the complexity of human experiences through multiple theoretical lenses.
-                  </p>
-                </div>
+              {/* Film Strip Border - Left */}
+              <div className="absolute -left-8 top-0 bottom-0 w-8 bg-gradient-to-b from-primary via-primary to-primary flex flex-col items-center justify-around">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-6 h-4 bg-background/90 rounded-sm"></div>
+                ))}
+              </div>
 
-                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.4s" }}>
-                  <div className="text-4xl mb-4">💡</div>
-                  <h4 className="text-xl font-semibold mb-2 text-foreground">Critical Analysis</h4>
-                  <p className="text-muted-foreground">
-                    Learn to question assumptions, examine power dynamics, and understand how different perspectives shape our understanding of poverty and social systems.
-                  </p>
-                </div>
+              {/* Film Strip Border - Right */}
+              <div className="absolute -right-8 top-0 bottom-0 w-8 bg-gradient-to-b from-primary via-primary to-primary flex flex-col items-center justify-around">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-6 h-4 bg-background/90 rounded-sm"></div>
+                ))}
+              </div>
 
-                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.5s" }}>
-                  <div className="text-4xl mb-4">🌍</div>
-                  <h4 className="text-xl font-semibold mb-2 text-foreground">Real-World Impact</h4>
-                  <p className="text-muted-foreground">
-                    Bridge the gap between theory and practice, understanding how research methodologies influence policy decisions and affect the lives of vulnerable populations.
-                  </p>
-                </div>
-
-                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.6s" }}>
-                  <div className="text-4xl mb-4">🔬</div>
-                  <h4 className="text-xl font-semibold mb-2 text-foreground">Rigorous Methods</h4>
-                  <p className="text-muted-foreground">
-                    Master the art of combining interpretivist, constructivist, and positivist approaches to create comprehensive, ethical, and impactful social work research.
-                  </p>
+              {/* Clapperboard Header */}
+              <div className="relative -top-4 mb-4">
+                <div className="bg-background border-4 border-primary p-4 transform -rotate-1 shadow-2xl">
+                  <div className="bg-gradient-to-r from-alert via-primary to-alert h-12 flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-repeating-linear-gradient-45deg bg-black/20 animate-pulse"></div>
+                    <div className="text-background font-black text-2xl tracking-widest z-10 flex items-center gap-2">
+                      🎬 FEATURED INSTRUCTOR 🎬
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary animate-fade-in" style={{ animationDelay: "0.7s" }}>
-                <p className="text-lg italic text-foreground">
-                  "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
-                </p>
-                <p className="mt-4 text-right font-semibold text-primary">— Dr. Bryson</p>
+              {/* Main Content */}
+              <div className="bg-card border-8 border-primary p-8 shadow-2xl relative">
+                <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
+                  <div className="text-center space-y-4">
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center animate-scale-in">
+                      <span className="text-6xl">👨‍🏫</span>
+                    </div>
+                    <h3 className="text-3xl font-bold text-primary animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                      Your Guide to Critical Social Work Research
+                    </h3>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6 mt-8">
+                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                      <div className="text-4xl mb-4">🎯</div>
+                      <h4 className="text-xl font-semibold mb-2 text-foreground">Research Excellence</h4>
+                      <p className="text-muted-foreground">
+                        Dr. Bryson brings decades of experience in social work research, helping students understand the complexity of human experiences through multiple theoretical lenses.
+                      </p>
+                    </div>
+
+                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                      <div className="text-4xl mb-4">💡</div>
+                      <h4 className="text-xl font-semibold mb-2 text-foreground">Critical Analysis</h4>
+                      <p className="text-muted-foreground">
+                        Learn to question assumptions, examine power dynamics, and understand how different perspectives shape our understanding of poverty and social systems.
+                      </p>
+                    </div>
+
+                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.5s" }}>
+                      <div className="text-4xl mb-4">🌍</div>
+                      <h4 className="text-xl font-semibold mb-2 text-foreground">Real-World Impact</h4>
+                      <p className="text-muted-foreground">
+                        Bridge the gap between theory and practice, understanding how research methodologies influence policy decisions and affect the lives of vulnerable populations.
+                      </p>
+                    </div>
+
+                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.6s" }}>
+                      <div className="text-4xl mb-4">🔬</div>
+                      <h4 className="text-xl font-semibold mb-2 text-foreground">Rigorous Methods</h4>
+                      <p className="text-muted-foreground">
+                        Master the art of combining interpretivist, constructivist, and positivist approaches to create comprehensive, ethical, and impactful social work research.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary animate-fade-in" style={{ animationDelay: "0.7s" }}>
+                    <p className="text-lg italic text-foreground">
+                      "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
+                    </p>
+                    <p className="mt-4 text-right font-semibold text-primary">— Dr. Bryson</p>
+                  </div>
+                </div>
               </div>
             </div>
           </PresentationSlide>
