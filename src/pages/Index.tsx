@@ -340,7 +340,6 @@ Thank you, and see you next week!`
               src={slideVideos[currentSlide]}
               autoPlay
               loop
-              muted
               className="w-full h-full object-cover"
             />
           </div>
