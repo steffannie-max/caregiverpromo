@@ -2,7 +2,7 @@ import { PresentationSlide } from "@/components/PresentationSlide";
 import { DefinitionCard } from "@/components/DefinitionCard";
 import { VideoSection } from "@/components/VideoSection";
 import { LensCard } from "@/components/LensCard";
-import { Eye, DollarSign, Scale } from "lucide-react";
+import { Eye, DollarSign, Scale, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
@@ -18,9 +18,32 @@ const Index = () => {
 
   const scrollToSlide = (index: number) => {
     setCurrentSlide(index);
+    localStorage.setItem('currentSlide', index.toString());
     const element = document.getElementById(`slide-${index}`);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const openPresenterMode = () => {
+    const presenterWindow = window.open('/presenter', 'Presenter View', 'width=1200,height=800');
+    if (presenterWindow) {
+      localStorage.setItem('currentSlide', currentSlide.toString());
+    }
+  };
+
+  // Sync with presenter view
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === 'currentSlide') {
+        const newSlide = parseInt(e.newValue || '0');
+        setCurrentSlide(newSlide);
+        const element = document.getElementById(`slide-${newSlide}`);
+        element?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, []);
 
   // Auto-scroll functionality
   useEffect(() => {
@@ -155,6 +178,15 @@ Thank you, and see you next week!`
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Week 7: Interpretivism/Constructivism</h1>
           <div className="flex gap-2 items-center">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={openPresenterMode}
+              className="mr-2"
+            >
+              <Presentation className="h-4 w-4 mr-1" />
+              Presenter Mode
+            </Button>
             <Button
               variant={showNotes ? "default" : "outline"}
               size="sm"
