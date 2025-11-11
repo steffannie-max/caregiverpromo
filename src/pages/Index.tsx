@@ -451,7 +451,7 @@ Thank you, and see you next week!`
 
         {/* Corner PIP Video Overlay */}
         {slideVideos[currentSlide] && hasStarted && currentSlide !== 5 && (
-          <div className="fixed bottom-20 right-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
+          <div className="fixed bottom-6 left-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
             <video
               ref={pipVideoRef}
               key={currentSlide}
