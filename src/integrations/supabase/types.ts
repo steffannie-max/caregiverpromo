@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      background_music: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          music_url: string
+          slide_number: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          music_url: string
+          slide_number: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          music_url?: string
+          slide_number?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       interview_videos: {
         Row: {
           duration: number | null

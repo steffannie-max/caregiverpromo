@@ -247,6 +247,11 @@ Thank you, and see you next week!`
                 📹 Manage Videos
               </Link>
             </Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/manage-music">
+                🎵 Manage Music
+              </Link>
+            </Button>
             <Button
               variant="outline"
               size="sm"

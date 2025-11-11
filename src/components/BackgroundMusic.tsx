@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX, Music } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
+import { supabase } from "@/integrations/supabase/client";
 
 interface BackgroundMusicProps {
   currentSlide: number;
@@ -11,12 +12,29 @@ export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState([70]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [musicMap, setMusicMap] = useState<{ [key: number]: string }>({});
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Music URLs for different sections
-  const musicMap: { [key: number]: string } = {
-    0: "", // Intro - add your intro music URL here
-    5: "", // Between sections - add transition music URL here
+  useEffect(() => {
+    fetchMusic();
+  }, []);
+
+  const fetchMusic = async () => {
+    const { data, error } = await supabase
+      .from("background_music")
+      .select("*")
+      .eq("is_active", true);
+    
+    if (error) {
+      console.error("Error fetching music:", error);
+      return;
+    }
+
+    const map: { [key: number]: string } = {};
+    data?.forEach(music => {
+      map[music.slide_number] = music.music_url;
+    });
+    setMusicMap(map);
   };
 
   useEffect(() => {
@@ -32,8 +50,13 @@ export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
       audioRef.current.src = musicUrl;
       audioRef.current.play();
       setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     }
-  }, [currentSlide]);
+  }, [currentSlide, musicMap]);
 
   const toggleMute = () => {
     if (audioRef.current) {
