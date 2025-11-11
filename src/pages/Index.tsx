@@ -657,103 +657,36 @@ Thank you, and see you next week!`
               </p>
             </div>
             
-            <Tabs defaultValue="section1" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-6">
-                <TabsTrigger value="section1">Section 1</TabsTrigger>
-                <TabsTrigger value="section2">Section 2</TabsTrigger>
-                <TabsTrigger value="section3">Section 3</TabsTrigger>
-              </TabsList>
+            <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
+              <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Dr. Bryson's Interview</h3>
+              <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
+              <ol className="space-y-3 list-decimal list-inside text-left mb-4">
+                <li className="text-sm md:text-base">What made you return to data from 20 years ago for your 2025 article, and what did you see differently with the new lens?</li>
+                <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights from the same data?</li>
+                <li className="text-sm md:text-base">Can you explain "care capital" and what mothers had to demonstrate to be seen as "good enough"?</li>
+                <li className="text-sm md:text-base">How are meanings like "neglect" socially constructed differently for poor vs wealthy families?</li>
+                <li className="text-sm md:text-base">How does using an interpretivist/constructivist approach with your "poverty governance" lens change what you can discover as a researcher?</li>
+                <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
+              </ol>
               
-              {/* Section 1: Your Research Journey */}
-              <TabsContent value="section1">
-                <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Section 1: Your Research Journey</h3>
-                  <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
-                  <ol className="space-y-3 list-decimal list-inside text-left mb-4">
-                    <li className="text-sm md:text-base">What made you return to data from 20 years ago for your 2025 article, and what did you see differently with the new lens?</li>
-                    <li className="text-sm md:text-base">Can you give a specific example where &quot;care capital&quot; (2016) vs &quot;poverty governance&quot; (2025) revealed different insights from the same data?</li>
-                  </ol>
-                  
-                  <div className="mt-6">
-                    {interviewVideos.section1 ? (
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                        <video
-                          controls
-                          className="w-full h-full"
-                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section1.file_path).data.publicUrl}
-                        />
-                      </div>
-                    ) : (
-                      <div className="p-4 bg-muted/50 rounded-lg text-center">
-                        <p className="text-sm font-semibold text-muted-foreground">
-                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
-                        </p>
-                      </div>
-                    )}
+              <div className="mt-6">
+                {interviewVideos.section1 ? (
+                  <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                    <video
+                      controls
+                      className="w-full h-full"
+                      src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section1.file_path).data.publicUrl}
+                    />
                   </div>
-                </div>
-              </TabsContent>
-
-              {/* Section 2: Theoretical Frameworks */}
-              <TabsContent value="section2">
-                <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Section 2: Theoretical Frameworks</h3>
-                  <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
-                  <ol className="space-y-3 list-decimal list-inside text-left mb-4">
-                    <li className="text-sm md:text-base">Can you explain &quot;care capital&quot; and what mothers had to demonstrate to be seen as &quot;good enough&quot;?</li>
-                    <li className="text-sm md:text-base">How are meanings like &quot;neglect&quot; socially constructed differently for poor vs wealthy families?</li>
-                  </ol>
-                  
-                  <div className="mt-6">
-                    {interviewVideos.section2 ? (
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                        <video
-                          controls
-                          className="w-full h-full"
-                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section2.file_path).data.publicUrl}
-                        />
-                      </div>
-                    ) : (
-                      <div className="p-4 bg-muted/50 rounded-lg text-center">
-                        <p className="text-sm font-semibold text-muted-foreground">
-                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
-                        </p>
-                      </div>
-                    )}
+                ) : (
+                  <div className="p-4 bg-muted/50 rounded-lg text-center">
+                    <p className="text-sm font-semibold text-muted-foreground">
+                      No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
+                    </p>
                   </div>
-                </div>
-              </TabsContent>
-
-              {/* Section 3: Practical Application */}
-              <TabsContent value="section3">
-                <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Section 3: Practical Application</h3>
-                  <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
-                  <ol className="space-y-3 list-decimal list-inside text-left mb-4">
-                    <li className="text-sm md:text-base">How does using an interpretivist/constructivist approach with your &quot;poverty governance&quot; lens change what you can discover as a researcher?</li>
-                    <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
-                  </ol>
-                  
-                  <div className="mt-6">
-                    {interviewVideos.section3 ? (
-                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                        <video
-                          controls
-                          className="w-full h-full"
-                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section3.file_path).data.publicUrl}
-                        />
-                      </div>
-                    ) : (
-                      <div className="p-4 bg-muted/50 rounded-lg text-center">
-                        <p className="text-sm font-semibold text-muted-foreground">
-                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </TabsContent>
-            </Tabs>
+                )}
+              </div>
+            </div>
           </div>
         </PresentationSlide>
 
@@ -808,49 +741,15 @@ Thank you, and see you next week!`
               <div className="bg-card border-8 border-primary p-8 shadow-2xl relative">
                 <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
                   <div className="text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center animate-scale-in">
-                      <span className="text-6xl">👨‍🏫</span>
-                    </div>
-                    <h3 className="text-3xl font-bold text-primary animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                    <h3 className="text-3xl font-bold text-primary animate-fade-in">
                       Your Guide to Critical Social Work Research
                     </h3>
+                    <p className="text-lg text-foreground">
+                      Dr. Bryson brings decades of experience in social work research, helping students understand the complexity of human experiences through multiple theoretical lenses.
+                    </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6 mt-8">
-                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.3s" }}>
-                      <div className="text-4xl mb-4">🎯</div>
-                      <h4 className="text-xl font-semibold mb-2 text-foreground">Research Excellence</h4>
-                      <p className="text-muted-foreground">
-                        Dr. Bryson brings decades of experience in social work research, helping students understand the complexity of human experiences through multiple theoretical lenses.
-                      </p>
-                    </div>
-
-                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.4s" }}>
-                      <div className="text-4xl mb-4">💡</div>
-                      <h4 className="text-xl font-semibold mb-2 text-foreground">Critical Analysis</h4>
-                      <p className="text-muted-foreground">
-                        Learn to question assumptions, examine power dynamics, and understand how different perspectives shape our understanding of poverty and social systems.
-                      </p>
-                    </div>
-
-                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.5s" }}>
-                      <div className="text-4xl mb-4">🌍</div>
-                      <h4 className="text-xl font-semibold mb-2 text-foreground">Real-World Impact</h4>
-                      <p className="text-muted-foreground">
-                        Bridge the gap between theory and practice, understanding how research methodologies influence policy decisions and affect the lives of vulnerable populations.
-                      </p>
-                    </div>
-
-                    <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.6s" }}>
-                      <div className="text-4xl mb-4">🔬</div>
-                      <h4 className="text-xl font-semibold mb-2 text-foreground">Rigorous Methods</h4>
-                      <p className="text-muted-foreground">
-                        Master the art of combining interpretivist, constructivist, and positivist approaches to create comprehensive, ethical, and impactful social work research.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary animate-fade-in" style={{ animationDelay: "0.7s" }}>
+                  <div className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary animate-fade-in">
                     <p className="text-lg italic text-foreground">
                       "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
                     </p>
@@ -860,6 +759,114 @@ Thank you, and see you next week!`
               </div>
             </div>
           </PresentationSlide>
+        </div>
+
+        {/* Video Section 1: Maid */}
+        <div id="slide-7">
+          <VideoSection
+            title="Maid (Netflix, Episode 1)"
+            videoUrl="https://www.youtube.com/watch?v=MMIBPTNmDoI"
+            timestamp="⏩ Social worker meeting scene"
+            questions={[
+              {
+                id: "maid-interp",
+                lens: "Interpretivist Lens",
+                text: "As researchers, how would our perspectives influence what we notice in this scene? How might two researchers interpret the same information differently?"
+              },
+              {
+                id: "maid-construct",
+                lens: "Constructivist Lens",
+                text: "How does meaning change depending on who's observing? How might Alex's perspective differ from the social worker's? What social norms shape how we interpret what's happening?"
+              },
+              {
+                id: "maid-posit",
+                lens: "Positivist (Facts/Objective)",
+                text: "What's actually happening? What could you record as observable facts?"
+              },
+              {
+                id: "maid-capital",
+                lens: "Capital (Resources/Advantages)",
+                text: "What resources or advantages does Alex have or lack? How might these affect how she's seen or how she navigates the situation?"
+              },
+              {
+                id: "maid-gov",
+                lens: "Poverty Governance (System/Rules)",
+                text: "How do rules, policies, or systems shape what's happening? What pressures are outside Alex's control?"
+              }
+            ]}
+          />
+        </div>
+
+        {/* Video Section 2: Claudine */}
+        <div id="slide-8">
+          <VideoSection
+            title="Claudine (1974)"
+            videoUrl="https://www.youtube.com/watch?v=ZOPy3FC-lUk"
+            timestamp="⏩ Skip to 1:26 - Welfare/social worker home visit"
+            questions={[
+              {
+                id: "claud-interp",
+                lens: "Interpretivist Lens",
+                text: "What 'truths' are highlighted or hidden depending on the lens? How do the characters' backgrounds influence how we interpret their actions?"
+              },
+              {
+                id: "claud-construct",
+                lens: "Constructivist Lens",
+                text: "How might the family's perspective or the researcher's perspective alter the interpretation of this home visit? What does 'appropriate home' mean in different contexts?"
+              },
+              {
+                id: "claud-posit",
+                lens: "Positivist (Facts/Objective)",
+                text: "What observable facts can be documented about the home and the interaction?"
+              },
+              {
+                id: "claud-capital",
+                lens: "Capital (Resources/Advantages)",
+                text: "What forms of capital (economic, social, cultural) are being assessed? What resources must Claudine demonstrate to be seen as a 'good mother'?"
+              },
+              {
+                id: "claud-gov",
+                lens: "Poverty Governance (System/Rules)",
+                text: "How does the welfare system shape this interaction? What rules govern this relationship?"
+              }
+            ]}
+          />
+        </div>
+
+        {/* Video Section 3: The Florida Project */}
+        <div id="slide-9">
+          <VideoSection
+            title="The Florida Project (2017)"
+            videoUrl="https://www.youtube.com/watch?v=bvZV09_0p9k"
+            timestamp="⏩ Skip to 1:43 - Social worker visit to Halley in motel"
+            questions={[
+              {
+                id: "florida-interp",
+                lens: "Interpretivist Lens",
+                text: "How might researchers from different backgrounds interpret this scene differently? What assumptions might shape our understanding?"
+              },
+              {
+                id: "florida-construct",
+                lens: "Constructivist Lens",
+                text: "How is the meaning of 'appropriate housing' socially constructed? How might living in a motel be interpreted differently by different observers?"
+              },
+              {
+                id: "florida-posit",
+                lens: "Positivist (Facts/Objective)",
+                text: "What are the observable, measurable facts about the living situation and the interaction?"
+              },
+              {
+                id: "florida-capital",
+                lens: "Capital (Resources/Advantages)",
+                text: "What economic, social, and cultural capital does Halley lack? How does this lack shape the interaction and assessment?"
+              },
+              {
+                id: "florida-gov",
+                lens: "Poverty Governance (System/Rules)",
+                text: "How do housing policies, child welfare rules, and economic systems create this situation? What structural factors are being individualized?"
+              }
+            ]}
+          />
         </div>
 
         {/* Slide 10: References */}
