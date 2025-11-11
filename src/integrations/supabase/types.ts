@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      interview_videos: {
+        Row: {
+          duration: number | null
+          file_path: string
+          file_size: number | null
+          id: string
+          section: string
+          title: string
+          updated_at: string
+          uploaded_at: string
+        }
+        Insert: {
+          duration?: number | null
+          file_path: string
+          file_size?: number | null
+          id?: string
+          section: string
+          title: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Update: {
+          duration?: number | null
+          file_path?: string
+          file_size?: number | null
+          id?: string
+          section?: string
+          title?: string
+          updated_at?: string
+          uploaded_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
