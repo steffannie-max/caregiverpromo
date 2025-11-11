@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import PresenterView from "./pages/PresenterView";
 import Auth from "./pages/Auth";
 import UploadVideos from "./pages/UploadVideos";
+import ManageVideos from "./pages/ManageVideos";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/presenter" element={<PresenterView />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/upload-videos" element={<UploadVideos />} />
+          <Route path="/manage-videos" element={<ManageVideos />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

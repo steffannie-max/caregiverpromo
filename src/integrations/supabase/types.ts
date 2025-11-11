@@ -51,18 +51,21 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
+          is_active: boolean | null
           slide_number: number
           video_url: string
         }
         Insert: {
           created_at?: string | null
           id?: string
+          is_active?: boolean | null
           slide_number: number
           video_url: string
         }
         Update: {
           created_at?: string | null
           id?: string
+          is_active?: boolean | null
           slide_number?: number
           video_url?: string
         }

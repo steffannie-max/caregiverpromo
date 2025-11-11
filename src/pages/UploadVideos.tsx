@@ -59,8 +59,12 @@ const UploadVideos = () => {
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-        audio: true
+        video: { width: 1280, height: 720 },
+        audio: { 
+          echoCancellation: true,
+          noiseSuppression: true,
+          sampleRate: 44100
+        }
       });
 
       if (videoPreviewRef.current) {
@@ -68,7 +72,8 @@ const UploadVideos = () => {
       }
 
       const recorder = new MediaRecorder(stream, {
-        mimeType: 'video/webm;codecs=vp9'
+        mimeType: 'video/webm;codecs=vp9,opus',
+        audioBitsPerSecond: 128000
       });
       
       chunksRef.current = [];

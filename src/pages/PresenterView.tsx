@@ -180,7 +180,11 @@ Thank you, and see you next week!`
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ 
         video: { width: 1280, height: 720 },
-        audio: true 
+        audio: { 
+          echoCancellation: true,
+          noiseSuppression: true,
+          sampleRate: 44100
+        }
       });
       
       // Show preview
@@ -189,7 +193,8 @@ Thank you, and see you next week!`
       }
       
       const recorder = new MediaRecorder(stream, { 
-        mimeType: 'video/webm;codecs=vp9' 
+        mimeType: 'video/webm;codecs=vp9,opus',
+        audioBitsPerSecond: 128000
       });
       
       chunksRef.current = [];
@@ -258,14 +263,19 @@ Thank you, and see you next week!`
         .from('presenter-videos')
         .getPublicUrl(filePath);
 
-      // Save to database
+      // Deactivate all other videos for this slide
+      await supabase
+        .from('slide_videos')
+        .update({ is_active: false })
+        .eq('slide_number', currentSlide);
+
+      // Save new video as active
       const { error: dbError } = await supabase
         .from('slide_videos')
-        .upsert({
+        .insert({
           slide_number: currentSlide,
-          video_url: publicUrl
-        }, {
-          onConflict: 'slide_number'
+          video_url: publicUrl,
+          is_active: true
         });
 
       if (dbError) throw dbError;
@@ -295,9 +305,14 @@ Thank you, and see you next week!`
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-6 pb-4 border-b border-border">
-          <h1 className="text-2xl font-bold text-primary mb-2">Presenter View</h1>
-          <p className="text-sm text-muted-foreground">Control your presentation from here</p>
+        <header className="mb-6 pb-4 border-b border-border flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold text-primary mb-2">Presenter View</h1>
+            <p className="text-sm text-muted-foreground">Control your presentation from here</p>
+          </div>
+          <Button variant="outline" onClick={() => window.location.href = "/manage-videos"}>
+            Manage All Videos
+          </Button>
         </header>
 
         {/* Controls */}

@@ -46,7 +46,8 @@ const Index = () => {
   const fetchSlideVideos = async () => {
     const { data, error } = await supabase
       .from("slide_videos")
-      .select("*");
+      .select("*")
+      .eq("is_active", true);
     
     if (error) {
       console.error("Error fetching slide videos:", error);
