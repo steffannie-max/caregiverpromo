@@ -5,16 +5,60 @@ import { LensCard } from "@/components/LensCard";
 import { Eye, DollarSign, Scale } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { Slider } from "@/components/ui/slider";
+import { Download, Play, Pause } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showNotes, setShowNotes] = useState(false);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(false);
+  const [scrollSpeed, setScrollSpeed] = useState([2]);
+  const notesRef = useRef<HTMLDivElement>(null);
 
   const scrollToSlide = (index: number) => {
     setCurrentSlide(index);
     const element = document.getElementById(`slide-${index}`);
     element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (!isAutoScrolling || !notesRef.current) return;
+
+    const scrollInterval = setInterval(() => {
+      if (notesRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = notesRef.current;
+        
+        // Check if we've reached the end
+        if (scrollTop + clientHeight >= scrollHeight - 10) {
+          setIsAutoScrolling(false);
+          return;
+        }
+        
+        // Scroll by pixels based on speed (1-5 scale)
+        notesRef.current.scrollTop += scrollSpeed[0] * 0.5;
+      }
+    }, 30); // Update every 30ms for smooth scrolling
+
+    return () => clearInterval(scrollInterval);
+  }, [isAutoScrolling, scrollSpeed]);
+
+  // Download notes function
+  const downloadNotes = () => {
+    const allNotes = Object.entries(speakerNotes)
+      .map(([slide, notes]) => `SLIDE ${parseInt(slide) + 1}\n${'='.repeat(50)}\n\n${notes}\n\n`)
+      .join('\n');
+    
+    const blob = new Blob([allNotes], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'speaker-notes.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   const speakerNotes = {
@@ -133,12 +177,60 @@ Thank you, and see you next week!`
         </div>
       </nav>
 
-      {/* Speaker Notes Panel */}
+      {/* Speaker Notes Panel with Teleprompter */}
       {showNotes && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border max-h-64 overflow-y-auto">
-          <div className="max-w-7xl mx-auto px-6 py-4">
-            <h3 className="text-sm font-semibold text-primary mb-2">Speaker Notes - Slide {currentSlide + 1}</h3>
-            <p className="text-sm text-foreground whitespace-pre-line">{speakerNotes[currentSlide as keyof typeof speakerNotes]}</p>
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border">
+          <div className="max-w-7xl mx-auto px-6 py-3">
+            {/* Controls */}
+            <div className="flex items-center gap-4 mb-3 pb-3 border-b border-border">
+              <h3 className="text-sm font-semibold text-primary">Speaker Notes - Slide {currentSlide + 1}</h3>
+              
+              <div className="flex items-center gap-2 ml-auto">
+                {/* Speed Control */}
+                <span className="text-xs text-muted-foreground whitespace-nowrap">Speed:</span>
+                <Slider
+                  value={scrollSpeed}
+                  onValueChange={setScrollSpeed}
+                  min={1}
+                  max={5}
+                  step={0.5}
+                  className="w-24"
+                />
+                <span className="text-xs text-muted-foreground w-8">{scrollSpeed[0]}x</span>
+                
+                {/* Play/Pause Button */}
+                <Button
+                  size="sm"
+                  variant={isAutoScrolling ? "default" : "outline"}
+                  onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                  className="gap-1"
+                >
+                  {isAutoScrolling ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+                  {isAutoScrolling ? "Pause" : "Auto Scroll"}
+                </Button>
+                
+                {/* Download Button */}
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={downloadNotes}
+                  className="gap-1"
+                >
+                  <Download className="h-3 w-3" />
+                  Download
+                </Button>
+              </div>
+            </div>
+            
+            {/* Scrollable Notes */}
+            <div 
+              ref={notesRef}
+              className="max-h-48 overflow-y-auto"
+            >
+              <p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+                {speakerNotes[currentSlide as keyof typeof speakerNotes]}
+              </p>
+            </div>
           </div>
         </div>
       )}
