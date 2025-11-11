@@ -750,6 +750,26 @@ Thank you, and see you next week!`
           </div>
         </PresentationSlide>
 
+        {/* Presenter Teaching Video before Maid */}
+        {slideVideos[6] && (
+          <div id="slide-6">
+            <PresentationSlide title="Introduction to Video Analysis">
+              <div className="max-w-4xl mx-auto">
+                <div className="aspect-video bg-black rounded-lg mb-6 overflow-hidden shadow-2xl">
+                  <video
+                    src={slideVideos[6]}
+                    controls
+                    className="w-full h-full"
+                  />
+                </div>
+                <p className="text-center text-muted-foreground">
+                  Watch this introduction before analyzing the movie scenes
+                </p>
+              </div>
+            </PresentationSlide>
+          </div>
+        )}
+
         {/* Video Section 1: Maid */}
         <div id="slide-7">
           <VideoSection
@@ -786,6 +806,26 @@ Thank you, and see you next week!`
           />
         </div>
 
+        {/* Presenter Teaching Video before Claudine */}
+        {slideVideos[7] && (
+          <div id="slide-7">
+            <PresentationSlide title="Understanding the Context">
+              <div className="max-w-4xl mx-auto">
+                <div className="aspect-video bg-black rounded-lg mb-6 overflow-hidden shadow-2xl">
+                  <video
+                    src={slideVideos[7]}
+                    controls
+                    className="w-full h-full"
+                  />
+                </div>
+                <p className="text-center text-muted-foreground">
+                  Teaching video for this section
+                </p>
+              </div>
+            </PresentationSlide>
+          </div>
+        )}
+
         {/* Video Section 2: Claudine */}
         <div id="slide-8">
           <VideoSection
@@ -821,6 +861,26 @@ Thank you, and see you next week!`
             ]}
           />
         </div>
+
+        {/* Presenter Teaching Video before Florida Project */}
+        {slideVideos[8] && (
+          <div id="slide-8">
+            <PresentationSlide title="Critical Lens Application">
+              <div className="max-w-4xl mx-auto">
+                <div className="aspect-video bg-black rounded-lg mb-6 overflow-hidden shadow-2xl">
+                  <video
+                    src={slideVideos[8]}
+                    controls
+                    className="w-full h-full"
+                  />
+                </div>
+                <p className="text-center text-muted-foreground">
+                  Teaching video for this section
+                </p>
+              </div>
+            </PresentationSlide>
+          </div>
+        )}
 
         {/* Video Section 3: The Florida Project */}
         <div id="slide-9">
