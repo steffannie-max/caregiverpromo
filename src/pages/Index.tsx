@@ -415,35 +415,34 @@ Thank you, and see you next week!`
               <div className="bg-primary/10 p-6 rounded-lg border-2 border-primary">
                 <h3 className="text-xl font-bold text-primary mb-4">Positivism</h3>
                 <ul className="space-y-3 text-sm">
-                  <li><strong>Auguste Comte (1830s)</strong><br />Founder; believed society could be studied using scientific methods</li>
-                  <li><strong>Vienna Circle (1920s-30s)</strong><br />Logical positivism; only empirically verifiable statements have meaning</li>
-                  <li><strong>Key idea:</strong> Objective reality exists and can be measured</li>
+                  <li><strong>Auguste Comte</strong> (oh-GOOST KOHNT)<br />1830s: Founder; society studied scientifically</li>
+                  <li><strong>Vienna Circle</strong><br />1920s-30s: Only measurable facts matter</li>
+                  <li><strong>Key idea:</strong> Objective reality can be measured</li>
                 </ul>
               </div>
 
               <div className="bg-secondary/10 p-6 rounded-lg border-2 border-secondary">
                 <h3 className="text-xl font-bold text-secondary mb-4">Interpretivism</h3>
                 <ul className="space-y-3 text-sm">
-                  <li><strong>Max Weber (early 1900s)</strong><br />Introduced <em>Verstehen</em> - understanding subjective meanings</li>
-                  <li><strong>Alfred Schutz (1930s-50s)</strong><br />Phenomenology; studied lived experience and intersubjectivity</li>
-                  <li><strong>Key idea:</strong> Must understand the meanings people attach to actions</li>
+                  <li><strong>Max Weber</strong> (VAHKS VAY-ber)<br />Early 1900s: <em>Verstehen</em> - understanding meanings</li>
+                  <li><strong>Alfred Schutz</strong> (AL-fred SHOOTS)<br />1930s-50s: Lived experience matters</li>
+                  <li><strong>Key idea:</strong> Understand subjective meanings</li>
                 </ul>
               </div>
 
               <div className="bg-accent/10 p-6 rounded-lg border-2 border-accent">
                 <h3 className="text-xl font-bold text-accent mb-4">Constructivism</h3>
                 <ul className="space-y-3 text-sm">
-                  <li><strong>Berger & Luckmann (1966)</strong><br />"The Social Construction of Reality" - foundational text</li>
-                  <li><strong>Kenneth Gergen (1980s-90s)</strong><br />Social constructionism; knowledge created through language</li>
-                  <li><strong>Michel Foucault</strong><br />Power shapes what counts as knowledge and truth</li>
-                  <li><strong>Key idea:</strong> Reality itself is socially constructed</li>
+                  <li><strong>Berger & Luckmann</strong> (BAIR-ger / LOOK-mahn)<br />1966: Reality is socially constructed</li>
+                  <li><strong>Kenneth Gergen</strong> (GER-gen)<br />1980s-90s: Language creates knowledge</li>
+                  <li><strong>Michel Foucault</strong> (mee-SHELL foo-KOH)<br />Power shapes truth</li>
                 </ul>
               </div>
             </div>
 
             <div className="bg-card p-6 rounded-lg border border-border">
               <p className="text-lg text-center italic">
-                "These represent fundamental disagreements about the nature of reality, knowledge, and how we can understand the social world."
+                "These represent fundamental disagreements about the nature of reality and knowledge."
               </p>
             </div>
           </div>
