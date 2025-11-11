@@ -10,9 +10,10 @@ interface BackgroundMusicProps {
 
 export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState([70]);
+  const [volume, setVolume] = useState([30]); // Start at low volume
   const [isPlaying, setIsPlaying] = useState(false);
   const [musicMap, setMusicMap] = useState<{ [key: number]: string }>({});
+  const [isReady, setIsReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -47,11 +48,19 @@ export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
     // Play music for specific slides if available
     const musicUrl = musicMap[currentSlide];
     if (musicUrl && audioRef.current) {
+      setIsReady(false);
       audioRef.current.src = musicUrl;
-      audioRef.current.play();
-      setIsPlaying(true);
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+        // Signal that music has started and videos can play after delay
+        setTimeout(() => {
+          setIsReady(true);
+          window.dispatchEvent(new CustomEvent('musicReady'));
+        }, 3000); // 3 second delay before videos can start
+      });
     } else {
       setIsPlaying(false);
+      setIsReady(false);
       if (audioRef.current) {
         audioRef.current.pause();
       }

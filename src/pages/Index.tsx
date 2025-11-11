@@ -21,10 +21,26 @@ const Index = () => {
   const notesRef = useRef<HTMLDivElement>(null);
   const [interviewVideos, setInterviewVideos] = useState<{ [key: string]: any }>({});
   const [slideVideos, setSlideVideos] = useState<{ [key: number]: string }>({});
+  const [canPlayVideos, setCanPlayVideos] = useState(false);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
 
   useEffect(() => {
     fetchInterviewVideos();
     fetchSlideVideos();
+    
+    // Listen for music ready event
+    const handleMusicReady = () => {
+      setCanPlayVideos(true);
+      // Auto-play all videos after music is ready
+      Object.values(videoRefs.current).forEach(video => {
+        if (video) {
+          video.play().catch(err => console.log('Video autoplay prevented:', err));
+        }
+      });
+    };
+    
+    window.addEventListener('musicReady', handleMusicReady);
+    return () => window.removeEventListener('musicReady', handleMusicReady);
   }, []);
 
   const fetchInterviewVideos = async () => {
@@ -569,6 +585,7 @@ Thank you, and see you next week!`
                     {interviewVideos.section1 ? (
                       <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                         <video
+                          ref={(el) => videoRefs.current['section1'] = el}
                           controls
                           className="w-full h-full"
                           src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section1.file_path).data.publicUrl}
@@ -599,6 +616,7 @@ Thank you, and see you next week!`
                     {interviewVideos.section2 ? (
                       <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                         <video
+                          ref={(el) => videoRefs.current['section2'] = el}
                           controls
                           className="w-full h-full"
                           src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section2.file_path).data.publicUrl}
@@ -629,6 +647,7 @@ Thank you, and see you next week!`
                     {interviewVideos.section3 ? (
                       <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                         <video
+                          ref={(el) => videoRefs.current['section3'] = el}
                           controls
                           className="w-full h-full"
                           src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section3.file_path).data.publicUrl}
