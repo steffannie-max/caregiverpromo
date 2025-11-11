@@ -208,7 +208,7 @@ const Index = () => {
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
                   <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Practical Application</h3>
                   <ol className="space-y-3 list-decimal list-inside text-left">
-                    <li className="text-sm md:text-base">What does your "poverty governance" lens reveal that changes how we understand child welfare?</li>
+                    <li className="text-sm md:text-base">How does using an interpretivist/constructivist approach with your "poverty governance" lens change what you can discover as a researcher?</li>
                     <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
                   </ol>
                   
