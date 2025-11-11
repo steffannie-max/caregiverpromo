@@ -24,6 +24,7 @@ const Index = () => {
   const [slideVideos, setSlideVideos] = useState<{ [key: number]: string }>({});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -420,10 +421,18 @@ Thank you, and see you next week!`
               size="lg"
               variant="default"
               onClick={previousSlide}
-              disabled={currentSlide === 0}
+              disabled={currentSlide === 0 || isPaused}
               className="shadow-lg"
             >
               ← Previous
+            </Button>
+            <Button
+              size="lg"
+              variant={isPaused ? "default" : "outline"}
+              onClick={() => setIsPaused(!isPaused)}
+              className="shadow-lg"
+            >
+              {isPaused ? <Play className="h-5 w-5" /> : <Pause className="h-5 w-5" />}
             </Button>
             <div className="bg-card border border-border rounded-lg px-4 py-2 flex items-center shadow-lg">
               <span className="text-sm font-semibold">
@@ -434,7 +443,7 @@ Thank you, and see you next week!`
               size="lg"
               variant="default"
               onClick={nextSlide}
-              disabled={currentSlide === 9}
+              disabled={currentSlide === 9 || isPaused}
               className="shadow-lg"
             >
               Next →
@@ -443,7 +452,7 @@ Thank you, and see you next week!`
         )}
 
         {/* Corner PIP Video Overlay */}
-        {slideVideos[currentSlide] && hasStarted && (
+        {slideVideos[currentSlide] && hasStarted && !isPaused && (
           <div className="fixed bottom-20 right-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
             <video
               key={currentSlide}
