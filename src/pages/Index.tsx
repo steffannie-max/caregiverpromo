@@ -8,6 +8,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 import { Download, Play, Pause } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,6 +17,28 @@ const Index = () => {
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [scrollSpeed, setScrollSpeed] = useState([2]);
   const notesRef = useRef<HTMLDivElement>(null);
+  const [interviewVideos, setInterviewVideos] = useState<{ [key: string]: any }>({});
+
+  useEffect(() => {
+    fetchInterviewVideos();
+  }, []);
+
+  const fetchInterviewVideos = async () => {
+    const { data, error } = await supabase
+      .from("interview_videos")
+      .select("*");
+    
+    if (error) {
+      console.error("Error fetching videos:", error);
+      return;
+    }
+
+    const videoMap: { [key: string]: any } = {};
+    data?.forEach(video => {
+      videoMap[video.section] = video;
+    });
+    setInterviewVideos(videoMap);
+  };
 
   const scrollToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -180,6 +204,11 @@ Thank you, and see you next week!`
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Week 7: Interpretivism/Constructivism</h1>
           <div className="flex gap-2 items-center">
+            <Button variant="outline" size="sm" asChild>
+              <Link to="/upload-videos">
+                📹 Manage Videos
+              </Link>
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -410,10 +439,22 @@ Thank you, and see you next week!`
                     <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights from the same data?</li>
                   </ol>
                   
-                  <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                    <p className="text-sm font-semibold text-primary">
-                      [Video Upload: Dr. Bryson&apos;s Responses - Section 1]
-                    </p>
+                  <div className="mt-6">
+                    {interviewVideos.section1 ? (
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                        <video
+                          controls
+                          className="w-full h-full"
+                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section1.file_path).data.publicUrl}
+                        />
+                      </div>
+                    ) : (
+                      <div className="p-4 bg-muted/50 rounded-lg text-center">
+                        <p className="text-sm font-semibold text-muted-foreground">
+                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </TabsContent>
@@ -427,10 +468,22 @@ Thank you, and see you next week!`
                     <li className="text-sm md:text-base">How are meanings like "neglect" socially constructed differently for poor vs wealthy families?</li>
                   </ol>
                   
-                  <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                    <p className="text-sm font-semibold text-primary">
-                      [Video Upload: Dr. Bryson&apos;s Responses - Section 2]
-                    </p>
+                  <div className="mt-6">
+                    {interviewVideos.section2 ? (
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                        <video
+                          controls
+                          className="w-full h-full"
+                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section2.file_path).data.publicUrl}
+                        />
+                      </div>
+                    ) : (
+                      <div className="p-4 bg-muted/50 rounded-lg text-center">
+                        <p className="text-sm font-semibold text-muted-foreground">
+                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </TabsContent>
@@ -444,10 +497,22 @@ Thank you, and see you next week!`
                     <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
                   </ol>
                   
-                  <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                    <p className="text-sm font-semibold text-primary">
-                      [Video Upload: Dr. Bryson&apos;s Responses - Section 3]
-                    </p>
+                  <div className="mt-6">
+                    {interviewVideos.section3 ? (
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden">
+                        <video
+                          controls
+                          className="w-full h-full"
+                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section3.file_path).data.publicUrl}
+                        />
+                      </div>
+                    ) : (
+                      <div className="p-4 bg-muted/50 rounded-lg text-center">
+                        <p className="text-sm font-semibold text-muted-foreground">
+                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </TabsContent>
