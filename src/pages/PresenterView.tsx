@@ -1,22 +1,24 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Play, Pause, SkipForward, SkipBack, Video, Mic, Square, Download } from "lucide-react";
+import { Play, Pause, SkipForward, SkipBack, Video, Square, Upload } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const PresenterView = () => {
+  const { toast } = useToast();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   const [scrollSpeed, setScrollSpeed] = useState([2]);
-  const [isRecordingAudio, setIsRecordingAudio] = useState(false);
-  const [isRecordingVideo, setIsRecordingVideo] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
   const notesRef = useRef<HTMLDivElement>(null);
-  const audioRecorderRef = useRef<MediaRecorder | null>(null);
-  const videoRecorderRef = useRef<MediaRecorder | null>(null);
-  const audioChunksRef = useRef<Blob[]>([]);
-  const videoChunksRef = useRef<Blob[]>([]);
+  const recorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
   const recordingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const videoPreviewRef = useRef<HTMLVideoElement>(null);
 
   const speakerNotes = {
     0: `Hi everyone, and welcome to week seven. Today we'll explore Interpretivism and Constructivism; now, these two research approaches seem similar, but we'll discuss some of the nuances between them. We'll also discuss how these two research approaches fundamentally change how we understand social work research.
@@ -146,7 +148,7 @@ Thank you, and see you next week!`
 
   // Recording timer
   useEffect(() => {
-    if (isRecordingAudio || isRecordingVideo) {
+    if (isRecording) {
       recordingIntervalRef.current = setInterval(() => {
         setRecordingTime(prev => prev + 1);
       }, 1000);
@@ -162,7 +164,7 @@ Thank you, and see you next week!`
         clearInterval(recordingIntervalRef.current);
       }
     };
-  }, [isRecordingAudio, isRecordingVideo]);
+  }, [isRecording]);
 
   const changeSlide = (newSlide: number) => {
     const slide = Math.max(0, Math.min(8, newSlide));
@@ -174,99 +176,113 @@ Thank you, and see you next week!`
     }));
   };
 
-  const startAudioRecording = async () => {
+  const startWebcamRecording = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-      audioChunksRef.current = [];
-
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          audioChunksRef.current.push(e.data);
-        }
-      };
-
-      recorder.onstop = () => {
-        const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `audio-recording-${Date.now()}.webm`;
-        a.click();
-        stream.getTracks().forEach(track => track.stop());
-      };
-
-      recorder.start();
-      audioRecorderRef.current = recorder;
-      setIsRecordingAudio(true);
-    } catch (error) {
-      console.error('Error starting audio recording:', error);
-      alert('Could not access microphone. Please check permissions.');
-    }
-  };
-
-  const stopAudioRecording = () => {
-    if (audioRecorderRef.current && isRecordingAudio) {
-      audioRecorderRef.current.stop();
-      audioRecorderRef.current = null;
-      setIsRecordingAudio(false);
-    }
-  };
-
-  const startVideoRecording = async () => {
-    try {
-      const displayStream = await navigator.mediaDevices.getDisplayMedia({ 
-        video: true,
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        video: { width: 1280, height: 720 },
         audio: true 
       });
       
-      const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      // Show preview
+      if (videoPreviewRef.current) {
+        videoPreviewRef.current.srcObject = stream;
+      }
       
-      // Combine display and audio
-      const tracks = [
-        ...displayStream.getVideoTracks(),
-        ...audioStream.getAudioTracks()
-      ];
-      
-      const combinedStream = new MediaStream(tracks);
-      const recorder = new MediaRecorder(combinedStream, { 
+      const recorder = new MediaRecorder(stream, { 
         mimeType: 'video/webm;codecs=vp9' 
       });
       
-      videoChunksRef.current = [];
+      chunksRef.current = [];
 
       recorder.ondataavailable = (e) => {
         if (e.data.size > 0) {
-          videoChunksRef.current.push(e.data);
+          chunksRef.current.push(e.data);
         }
       };
 
-      recorder.onstop = () => {
-        const blob = new Blob(videoChunksRef.current, { type: 'video/webm' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `video-recording-${Date.now()}.webm`;
-        a.click();
+      recorder.onstop = async () => {
+        const blob = new Blob(chunksRef.current, { type: 'video/webm' });
+        stream.getTracks().forEach(track => track.stop());
         
-        displayStream.getTracks().forEach(track => track.stop());
-        audioStream.getTracks().forEach(track => track.stop());
+        if (videoPreviewRef.current) {
+          videoPreviewRef.current.srcObject = null;
+        }
+        
+        await uploadVideo(blob);
       };
 
       recorder.start();
-      videoRecorderRef.current = recorder;
-      setIsRecordingVideo(true);
+      recorderRef.current = recorder;
+      setIsRecording(true);
+      
+      toast({
+        title: "Recording Started",
+        description: `Recording for Slide ${currentSlide + 1}`,
+      });
     } catch (error) {
-      console.error('Error starting video recording:', error);
-      alert('Could not start screen recording. Please check permissions.');
+      console.error('Error starting webcam recording:', error);
+      toast({
+        title: "Error",
+        description: "Could not access webcam. Please check permissions.",
+        variant: "destructive",
+      });
     }
   };
 
-  const stopVideoRecording = () => {
-    if (videoRecorderRef.current && isRecordingVideo) {
-      videoRecorderRef.current.stop();
-      videoRecorderRef.current = null;
-      setIsRecordingVideo(false);
+  const stopWebcamRecording = () => {
+    if (recorderRef.current && isRecording) {
+      recorderRef.current.stop();
+      recorderRef.current = null;
+      setIsRecording(false);
+    }
+  };
+
+  const uploadVideo = async (blob: Blob) => {
+    setIsUploading(true);
+    try {
+      const fileName = `slide-${currentSlide}-${Date.now()}.webm`;
+      const filePath = `${fileName}`;
+
+      // Upload to Supabase Storage
+      const { error: uploadError } = await supabase.storage
+        .from('presenter-videos')
+        .upload(filePath, blob, {
+          contentType: 'video/webm',
+          upsert: true
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('presenter-videos')
+        .getPublicUrl(filePath);
+
+      // Save to database
+      const { error: dbError } = await supabase
+        .from('slide_videos')
+        .upsert({
+          slide_number: currentSlide,
+          video_url: publicUrl
+        }, {
+          onConflict: 'slide_number'
+        });
+
+      if (dbError) throw dbError;
+
+      toast({
+        title: "Video Uploaded",
+        description: `Slide ${currentSlide + 1} video saved successfully!`,
+      });
+    } catch (error) {
+      console.error('Error uploading video:', error);
+      toast({
+        title: "Upload Failed",
+        description: "Could not upload video. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -328,53 +344,56 @@ Thank you, and see you next week!`
             </div>
           </div>
 
-          {/* Recording Controls */}
+          {/* Webcam Recording */}
           <div className="bg-card border border-border rounded-lg p-4">
-            <h2 className="text-lg font-semibold mb-3">Recording</h2>
+            <h2 className="text-lg font-semibold mb-3">Webcam Recording (PIP)</h2>
             <div className="space-y-3">
-              {(isRecordingAudio || isRecordingVideo) && (
+              {/* Preview */}
+              <div className="relative bg-black rounded-lg overflow-hidden aspect-video">
+                <video
+                  ref={videoPreviewRef}
+                  autoPlay
+                  muted
+                  className="w-full h-full object-cover"
+                />
+                {!isRecording && (
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+                    <Video className="h-12 w-12 opacity-50" />
+                  </div>
+                )}
+              </div>
+
+              {isRecording && (
                 <div className="text-center py-2 bg-destructive/10 rounded-lg">
                   <div className="text-2xl font-mono font-bold text-destructive">
                     {formatTime(recordingTime)}
                   </div>
-                  <div className="text-xs text-muted-foreground">Recording in progress</div>
+                  <div className="text-xs text-muted-foreground">Recording for Slide {currentSlide + 1}</div>
+                </div>
+              )}
+
+              {isUploading && (
+                <div className="text-center py-2 bg-primary/10 rounded-lg">
+                  <Upload className="h-5 w-5 mx-auto mb-1 animate-pulse text-primary" />
+                  <div className="text-xs text-muted-foreground">Uploading...</div>
                 </div>
               )}
               
               <Button
                 className="w-full"
-                variant={isRecordingAudio ? "destructive" : "outline"}
-                onClick={isRecordingAudio ? stopAudioRecording : startAudioRecording}
-                disabled={isRecordingVideo}
+                variant={isRecording ? "destructive" : "default"}
+                onClick={isRecording ? stopWebcamRecording : startWebcamRecording}
+                disabled={isUploading}
               >
-                {isRecordingAudio ? (
+                {isRecording ? (
                   <>
                     <Square className="h-4 w-4 mr-2" />
-                    Stop Audio
-                  </>
-                ) : (
-                  <>
-                    <Mic className="h-4 w-4 mr-2" />
-                    Record Audio
-                  </>
-                )}
-              </Button>
-
-              <Button
-                className="w-full"
-                variant={isRecordingVideo ? "destructive" : "outline"}
-                onClick={isRecordingVideo ? stopVideoRecording : startVideoRecording}
-                disabled={isRecordingAudio}
-              >
-                {isRecordingVideo ? (
-                  <>
-                    <Square className="h-4 w-4 mr-2" />
-                    Stop Video
+                    Stop & Upload
                   </>
                 ) : (
                   <>
                     <Video className="h-4 w-4 mr-2" />
-                    Record Screen
+                    Record for Slide {currentSlide + 1}
                   </>
                 )}
               </Button>

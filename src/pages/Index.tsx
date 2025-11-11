@@ -19,9 +19,11 @@ const Index = () => {
   const [scrollSpeed, setScrollSpeed] = useState([2]);
   const notesRef = useRef<HTMLDivElement>(null);
   const [interviewVideos, setInterviewVideos] = useState<{ [key: string]: any }>({});
+  const [slideVideos, setSlideVideos] = useState<{ [key: number]: string }>({});
 
   useEffect(() => {
     fetchInterviewVideos();
+    fetchSlideVideos();
   }, []);
 
   const fetchInterviewVideos = async () => {
@@ -39,6 +41,23 @@ const Index = () => {
       videoMap[video.section] = video;
     });
     setInterviewVideos(videoMap);
+  };
+
+  const fetchSlideVideos = async () => {
+    const { data, error } = await supabase
+      .from("slide_videos")
+      .select("*");
+    
+    if (error) {
+      console.error("Error fetching slide videos:", error);
+      return;
+    }
+
+    const videoMap: { [key: number]: string } = {};
+    data?.forEach(video => {
+      videoMap[video.slide_number] = video.video_url;
+    });
+    setSlideVideos(videoMap);
   };
 
   const scrollToSlide = (index: number) => {
@@ -299,7 +318,20 @@ Thank you, and see you next week!`
         </div>
       )}
 
-      <div className="pt-16">
+      <div className="pt-16 relative">
+        {/* Corner PIP Video Overlay */}
+        {slideVideos[currentSlide] && (
+          <div className="fixed bottom-20 right-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
+            <video
+              src={slideVideos[currentSlide]}
+              autoPlay
+              loop
+              muted
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
         {/* Slide 1: Title */}
         <section id="slide-0" className="min-h-screen relative flex items-center justify-center overflow-hidden">
           {/* Hero Image Background */}
