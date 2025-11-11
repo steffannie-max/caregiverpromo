@@ -159,7 +159,7 @@ const Index = () => {
         >
           <div className="space-y-6 max-w-5xl mx-auto">
             <p className="text-xl text-center mb-6">
-              Dr. Bryson analyzed the same dataset in two articles published 9 years apart – one in 2016 and another in 2025 – using different interpretive frameworks.
+              Dr. Bryson analyzed data collected 20 years ago in two articles published 9 years apart – one in 2016 and another in 2025 – using different interpretive frameworks.
             </p>
             
             <Tabs defaultValue="section1" className="w-full">
@@ -174,8 +174,8 @@ const Index = () => {
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
                   <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Your Research Journey</h3>
                   <ol className="space-y-3 list-decimal list-inside text-left">
-                    <li className="text-sm md:text-base">What made you return to this data years later for your 2025 article, and what did you see differently with the new lens?</li>
-                    <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights?</li>
+                    <li className="text-sm md:text-base">What made you return to data from 20 years ago for your 2025 article, and what did you see differently with the new lens?</li>
+                    <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights from the same data?</li>
                   </ol>
                   
                   <div className="mt-6 p-4 bg-muted/50 rounded-lg">
