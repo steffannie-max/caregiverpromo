@@ -25,6 +25,7 @@ const Index = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const pipVideoRef = useRef<HTMLVideoElement | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,6 +51,20 @@ const Index = () => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setIsAuthenticated(false);
+  };
+
+  const togglePause = () => {
+    const newPausedState = !isPaused;
+    setIsPaused(newPausedState);
+    
+    // Control PIP video playback
+    if (pipVideoRef.current) {
+      if (newPausedState) {
+        pipVideoRef.current.pause();
+      } else {
+        pipVideoRef.current.play();
+      }
+    }
   };
 
   const fetchInterviewVideos = async () => {
@@ -412,7 +427,7 @@ Thank you, and see you next week!`
             <Button
               size="lg"
               variant={isPaused ? "default" : "secondary"}
-              onClick={() => setIsPaused(!isPaused)}
+              onClick={togglePause}
               className="shadow-lg px-6"
             >
               {isPaused ? "▶ Play" : "⏸ Pause"}
@@ -435,9 +450,10 @@ Thank you, and see you next week!`
         )}
 
         {/* Corner PIP Video Overlay */}
-        {slideVideos[currentSlide] && hasStarted && !isPaused && (
+        {slideVideos[currentSlide] && hasStarted && (
           <div className="fixed bottom-20 right-6 z-50 w-64 h-36 rounded-lg overflow-hidden shadow-2xl border-2 border-primary">
             <video
+              ref={pipVideoRef}
               key={currentSlide}
               src={slideVideos[currentSlide]}
               autoPlay
