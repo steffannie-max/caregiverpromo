@@ -169,14 +169,13 @@ const Index = () => {
                 <TabsTrigger value="section3">Section 3</TabsTrigger>
               </TabsList>
               
-              {/* Section 1: Returning to the Data */}
+              {/* Section 1: Your Research Journey */}
               <TabsContent value="section1">
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Returning to the Data</h3>
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Your Research Journey</h3>
                   <ol className="space-y-3 list-decimal list-inside text-left">
-                    <li className="text-sm md:text-base">You analyzed the same dataset 20 years apart using different interpretive frameworks. What made you return to this data, and what did you see differently?</li>
-                    <li className="text-sm md:text-base">How did your own perspective as a researcher change between 2016 and 2025?</li>
-                    <li className="text-sm md:text-base">Can you walk us through a specific example where the "care capital" lens in 2016 highlighted something different than the "poverty governance" lens in 2025?</li>
+                    <li className="text-sm md:text-base">What made you return to this data after 20 years, and what did you see differently with the new lens?</li>
+                    <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights?</li>
                   </ol>
                   
                   <div className="mt-6 p-4 bg-muted/50 rounded-lg">
@@ -187,15 +186,13 @@ const Index = () => {
                 </div>
               </TabsContent>
 
-              {/* Section 2: Care Capital Framework */}
+              {/* Section 2: Theoretical Frameworks */}
               <TabsContent value="section2">
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Care Capital Framework</h3>
-                  <ol className="space-y-3 list-decimal list-inside text-left" start={4}>
-                    <li className="text-sm md:text-base">Can you explain Bourdieu&apos;s concept of capital and how you extended it to "care capital"?</li>
-                    <li className="text-sm md:text-base">What kinds of capital were mothers expected to demonstrate to be seen as "good enough" parents?</li>
-                    <li className="text-sm md:text-base">How would a positivist researcher approach this data differently? What would they miss?</li>
-                    <li className="text-sm md:text-base">When you say meanings are "socially constructed," what does that look like in child welfare practice?</li>
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Theoretical Frameworks</h3>
+                  <ol className="space-y-3 list-decimal list-inside text-left">
+                    <li className="text-sm md:text-base">Can you explain "care capital" and what mothers had to demonstrate to be seen as "good enough"?</li>
+                    <li className="text-sm md:text-base">How are meanings like "neglect" socially constructed differently for poor vs wealthy families?</li>
                   </ol>
                   
                   <div className="mt-6 p-4 bg-muted/50 rounded-lg">
@@ -206,14 +203,13 @@ const Index = () => {
                 </div>
               </TabsContent>
 
-              {/* Section 3: Poverty Governance & Theoretical Frameworks */}
+              {/* Section 3: Practical Application */}
               <TabsContent value="section3">
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Poverty Governance & Theoretical Frameworks</h3>
-                  <ol className="space-y-3 list-decimal list-inside text-left" start={8}>
-                    <li className="text-sm md:text-base">In your 2025 article, you use a "poverty governance" lens. What does this framework reveal?</li>
-                    <li className="text-sm md:text-base">How do child welfare policies govern poverty rather than protect children?</li>
-                    <li className="text-sm md:text-base">What advice would you give to new researchers about choosing theoretical lenses?</li>
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Practical Application</h3>
+                  <ol className="space-y-3 list-decimal list-inside text-left">
+                    <li className="text-sm md:text-base">What does your "poverty governance" lens reveal that changes how we understand child welfare?</li>
+                    <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
                   </ol>
                   
                   <div className="mt-6 p-4 bg-muted/50 rounded-lg">
