@@ -756,13 +756,25 @@ Thank you, and see you next week!`
           <div className="space-y-4 text-left max-w-4xl mx-auto">
             <div className="space-y-3">
               <p className="text-sm md:text-base">
+                Berger, P. L., & Luckmann, T. (1966). <em>The social construction of reality: A treatise in the sociology of knowledge</em>. Anchor Books.
+              </p>
+              <p className="text-sm md:text-base">
                 Bryson, S. A. (2016). A credit check of maternal assets: Low-income Black mothers' navigation of child welfare services. <em>The British Journal of Social Work</em>, 46(6), 1558-1574.
               </p>
               <p className="text-sm md:text-base">
                 Bryson, S. A. (2025). "Oh, this one has money": Policing, not protecting families. <em>Child Abuse & Neglect</em>, 159, 107119.
               </p>
               <p className="text-sm md:text-base">
+                Comte, A. (1855). <em>The positive philosophy</em> (H. Martineau, Trans.). Calvin Blanchard.
+              </p>
+              <p className="text-sm md:text-base">
                 Crotty, M. (2015). <em>The foundations of social research: Meaning and perspective in the research process</em>. SAGE Publications.
+              </p>
+              <p className="text-sm md:text-base">
+                Schutz, A. (1967). <em>The phenomenology of the social world</em>. Northwestern University Press.
+              </p>
+              <p className="text-sm md:text-base">
+                Weber, M. (1978). <em>Economy and society: An outline of interpretive sociology</em> (G. Roth & C. Wittich, Eds.). University of California Press.
               </p>
             </div>
             
