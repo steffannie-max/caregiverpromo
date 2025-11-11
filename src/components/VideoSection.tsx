@@ -55,7 +55,20 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
         </div>
 
         <div className="grid gap-6">
-          <h3 className="text-2xl font-semibold text-foreground">Reflection Questions</h3>
+          <div className="flex items-center gap-3">
+            <h3 className="text-2xl font-semibold text-foreground">Reflection Questions</h3>
+            <div className="flex items-center gap-2 text-primary animate-pulse">
+              <span className="text-sm font-medium">Scroll down</span>
+              <svg 
+                className="w-5 h-5 animate-bounce" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
           {questions.map((question) => (
             <Card key={question.id} className="p-6 hover:shadow-lg transition-shadow">
               <div className="mb-2">
