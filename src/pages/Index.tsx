@@ -10,8 +10,9 @@ import { Slider } from "@/components/ui/slider";
 import { Download, Play, Pause } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-interpretivism.jpg";
+import { LogIn, LogOut } from "lucide-react";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,10 +24,13 @@ const Index = () => {
   const [slideVideos, setSlideVideos] = useState<{ [key: number]: string }>({});
   const [canPlayVideos, setCanPlayVideos] = useState(false);
   const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchInterviewVideos();
     fetchSlideVideos();
+    checkAuth();
     
     // Listen for music ready event
     const handleMusicReady = () => {
@@ -40,8 +44,27 @@ const Index = () => {
     };
     
     window.addEventListener('musicReady', handleMusicReady);
-    return () => window.removeEventListener('musicReady', handleMusicReady);
+    
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setIsAuthenticated(!!session);
+    });
+    
+    return () => {
+      window.removeEventListener('musicReady', handleMusicReady);
+      subscription.unsubscribe();
+    };
   }, []);
+
+  const checkAuth = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    setIsAuthenticated(!!session);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setIsAuthenticated(false);
+  };
 
   const fetchInterviewVideos = async () => {
     const { data, error } = await supabase
@@ -258,34 +281,52 @@ Thank you, and see you next week!`
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold text-primary">Week 7: Interpretivism/Constructivism</h1>
           <div className="flex gap-2 items-center">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/upload-videos">
-                📹 Manage Videos
-              </Link>
-            </Button>
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/manage-music">
-                🎵 Manage Music
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={openPresenterMode}
-              className="mr-2"
-            >
-              <Presentation className="h-4 w-4 mr-1" />
-              Presenter Mode
-            </Button>
-            <Button
-              variant={showNotes ? "default" : "outline"}
-              size="sm"
-              onClick={() => setShowNotes(!showNotes)}
-              className="mr-2"
-            >
-              📝 {showNotes ? "Hide" : "Show"} Notes
-            </Button>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((idx) => (
+            {isAuthenticated ? (
+              <>
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/upload-videos">
+                    📹 Manage Videos
+                  </Link>
+                </Button>
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/manage-music">
+                    🎵 Manage Music
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={openPresenterMode}
+                  className="mr-2"
+                >
+                  <Presentation className="h-4 w-4 mr-1" />
+                  Presenter Mode
+                </Button>
+                <Button
+                  variant={showNotes ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setShowNotes(!showNotes)}
+                  className="mr-2"
+                >
+                  📝 {showNotes ? "Hide" : "Show"} Notes
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="h-4 w-4" />
+                </Button>
+              </>
+            ) : (
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/auth">
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Presenter Login
+                </Link>
+              </Button>
+            )}
+            {isAuthenticated && [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((idx) => (
               <Button
                 key={idx}
                 variant={currentSlide === idx ? "default" : "outline"}
@@ -300,7 +341,7 @@ Thank you, and see you next week!`
       </nav>
 
       {/* Speaker Notes Panel with Teleprompter */}
-      {showNotes && (
+      {showNotes && isAuthenticated && (
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-card border-t border-border">
           <div className="max-w-7xl mx-auto px-6 py-3">
             {/* Controls */}

@@ -55,11 +55,11 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>{isLogin ? "Login" : "Sign Up"}</CardTitle>
+          <CardTitle>{isLogin ? "Presenter Login" : "Create Presenter Account"}</CardTitle>
           <CardDescription>
             {isLogin
-              ? "Login to upload interview videos"
-              : "Create an account to upload interview videos"}
+              ? "Login to access presenter controls and manage content"
+              : "Create a presenter account to manage videos and music"}
           </CardDescription>
         </CardHeader>
         <CardContent>
