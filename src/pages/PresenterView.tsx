@@ -86,6 +86,8 @@ This is interpretivism and constructivism in action: same data, different lens, 
 
 Dr. Bryson, thank you so much for joining us.
 
+Now, this interview is organized into 3 sections. Let's start with Section 1. You'll see three tabs at the top - go ahead and click on Section 1 if it's not already selected. Under each section tab, you'll find the specific questions that Dr. Bryson addresses in her response.
+
 [PLAY DR. BRYSON INTERVIEW VIDEOS]
 
 Thank you so much, Dr. Bryson. That was incredibly helpful for understanding how our interpretive frameworks shape what we can see and understand.

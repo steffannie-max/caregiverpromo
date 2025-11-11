@@ -523,9 +523,22 @@ Thank you, and see you next week!`
           variant="gradient"
         >
           <div className="space-y-6 max-w-5xl mx-auto">
-            <p className="text-xl text-center mb-6">
-              Dr. Bryson analyzed data collected 20 years ago in two articles published 9 years apart – one in 2016 and another in 2025 – using different interpretive frameworks.
-            </p>
+            <div className="bg-primary/10 border-2 border-primary rounded-lg p-6 mb-6">
+              <p className="text-xl text-center mb-4">
+                Dr. Bryson analyzed data collected 20 years ago in two articles published 9 years apart – one in 2016 and another in 2025 – using different interpretive frameworks.
+              </p>
+              <div className="text-center space-y-2">
+                <p className="text-lg font-semibold text-primary">
+                  This interview is divided into 3 sections
+                </p>
+                <p className="text-base">
+                  👉 Start by selecting <strong>Section 1</strong> below, then work through each section in order
+                </p>
+                <p className="text-sm text-muted-foreground italic">
+                  (The specific questions Dr. Bryson answers are listed under each section tab)
+                </p>
+              </div>
+            </div>
             
             <Tabs defaultValue="section1" className="w-full">
               <TabsList className="grid w-full grid-cols-3 mb-6">
@@ -537,10 +550,11 @@ Thank you, and see you next week!`
               {/* Section 1: Your Research Journey */}
               <TabsContent value="section1">
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Your Research Journey</h3>
-                  <ol className="space-y-3 list-decimal list-inside text-left">
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Section 1: Your Research Journey</h3>
+                  <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
+                  <ol className="space-y-3 list-decimal list-inside text-left mb-4">
                     <li className="text-sm md:text-base">What made you return to data from 20 years ago for your 2025 article, and what did you see differently with the new lens?</li>
-                    <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights from the same data?</li>
+                    <li className="text-sm md:text-base">Can you give a specific example where &quot;care capital&quot; (2016) vs &quot;poverty governance&quot; (2025) revealed different insights from the same data?</li>
                   </ol>
                   
                   <div className="mt-6">
@@ -566,10 +580,11 @@ Thank you, and see you next week!`
               {/* Section 2: Theoretical Frameworks */}
               <TabsContent value="section2">
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Theoretical Frameworks</h3>
-                  <ol className="space-y-3 list-decimal list-inside text-left">
-                    <li className="text-sm md:text-base">Can you explain "care capital" and what mothers had to demonstrate to be seen as "good enough"?</li>
-                    <li className="text-sm md:text-base">How are meanings like "neglect" socially constructed differently for poor vs wealthy families?</li>
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Section 2: Theoretical Frameworks</h3>
+                  <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
+                  <ol className="space-y-3 list-decimal list-inside text-left mb-4">
+                    <li className="text-sm md:text-base">Can you explain &quot;care capital&quot; and what mothers had to demonstrate to be seen as &quot;good enough&quot;?</li>
+                    <li className="text-sm md:text-base">How are meanings like &quot;neglect&quot; socially constructed differently for poor vs wealthy families?</li>
                   </ol>
                   
                   <div className="mt-6">
@@ -595,9 +610,10 @@ Thank you, and see you next week!`
               {/* Section 3: Practical Application */}
               <TabsContent value="section3">
                 <div className="bg-card p-6 md:p-8 rounded-lg border border-border">
-                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Practical Application</h3>
-                  <ol className="space-y-3 list-decimal list-inside text-left">
-                    <li className="text-sm md:text-base">How does using an interpretivist/constructivist approach with your "poverty governance" lens change what you can discover as a researcher?</li>
+                  <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Section 3: Practical Application</h3>
+                  <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
+                  <ol className="space-y-3 list-decimal list-inside text-left mb-4">
+                    <li className="text-sm md:text-base">How does using an interpretivist/constructivist approach with your &quot;poverty governance&quot; lens change what you can discover as a researcher?</li>
                     <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
                   </ol>
                   
