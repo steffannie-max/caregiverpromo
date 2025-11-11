@@ -412,8 +412,8 @@ Thank you, and see you next week!`
       )}
 
       <div className="pt-16 relative">
-        {/* Student Navigation Controls */}
-        {!isAuthenticated && hasStarted && (
+        {/* Navigation Controls */}
+        {hasStarted && (
           <div className="fixed bottom-6 right-6 z-50 flex gap-3">
             <Button
               size="lg"
