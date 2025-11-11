@@ -768,40 +768,63 @@ Thank you, and see you next week!`
           </div>
         </PresentationSlide>
 
-        {/* Video Analysis Section */}
+        {/* Dr. Bryson Introduction */}
         <div id="slide-6">
-          <VideoSection
-            title="Video Analysis: Social Work in Practice"
-            videoUrl="https://www.youtube.com/watch?v=MMIBPTNmDoI"
-            timestamp="⏩ Skip to key scene"
-            questions={[
-              {
-                id: "video-interp",
-                lens: "Interpretivist Lens",
-                text: "As researchers, how would our perspectives influence what we notice in this scene? How might two researchers interpret the same information differently?"
-              },
-              {
-                id: "video-construct",
-                lens: "Constructivist Lens",
-                text: "How does meaning change depending on who's observing? What social norms shape how we interpret what's happening?"
-              },
-              {
-                id: "video-posit",
-                lens: "Positivist (Facts/Objective)",
-                text: "What's actually happening? What could you record as observable facts?"
-              },
-              {
-                id: "video-capital",
-                lens: "Capital (Resources/Advantages)",
-                text: "What resources or advantages are present or lacking? How might these affect the situation and how it's perceived?"
-              },
-              {
-                id: "video-gov",
-                lens: "Poverty Governance (System/Rules)",
-                text: "How do rules, policies, or systems shape what's happening? What pressures are outside individuals' control?"
-              }
-            ]}
-          />
+          <PresentationSlide
+            title="Meet Dr. Bryson"
+          >
+            <div className="max-w-4xl mx-auto space-y-8 animate-fade-in">
+              <div className="text-center space-y-4">
+                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center animate-scale-in">
+                  <span className="text-6xl">👨‍🏫</span>
+                </div>
+                <h3 className="text-3xl font-bold text-primary animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                  Your Guide to Critical Social Work Research
+                </h3>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6 mt-8">
+                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                  <div className="text-4xl mb-4">🎯</div>
+                  <h4 className="text-xl font-semibold mb-2 text-foreground">Research Excellence</h4>
+                  <p className="text-muted-foreground">
+                    Dr. Bryson brings decades of experience in social work research, helping students understand the complexity of human experiences through multiple theoretical lenses.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                  <div className="text-4xl mb-4">💡</div>
+                  <h4 className="text-xl font-semibold mb-2 text-foreground">Critical Analysis</h4>
+                  <p className="text-muted-foreground">
+                    Learn to question assumptions, examine power dynamics, and understand how different perspectives shape our understanding of poverty and social systems.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.5s" }}>
+                  <div className="text-4xl mb-4">🌍</div>
+                  <h4 className="text-xl font-semibold mb-2 text-foreground">Real-World Impact</h4>
+                  <p className="text-muted-foreground">
+                    Bridge the gap between theory and practice, understanding how research methodologies influence policy decisions and affect the lives of vulnerable populations.
+                  </p>
+                </div>
+
+                <div className="p-6 bg-card rounded-lg shadow-lg border border-primary/20 hover-scale animate-fade-in" style={{ animationDelay: "0.6s" }}>
+                  <div className="text-4xl mb-4">🔬</div>
+                  <h4 className="text-xl font-semibold mb-2 text-foreground">Rigorous Methods</h4>
+                  <p className="text-muted-foreground">
+                    Master the art of combining interpretivist, constructivist, and positivist approaches to create comprehensive, ethical, and impactful social work research.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary animate-fade-in" style={{ animationDelay: "0.7s" }}>
+                <p className="text-lg italic text-foreground">
+                  "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
+                </p>
+                <p className="mt-4 text-right font-semibold text-primary">— Dr. Bryson</p>
+              </div>
+            </div>
+          </PresentationSlide>
         </div>
 
         {/* Slide 10: References */}
