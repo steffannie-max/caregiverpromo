@@ -752,7 +752,7 @@ Thank you, and see you next week!`
         </PresentationSlide>
 
         {/* Video Section 1: Maid */}
-        <div id="slide-7">
+        <div id="slide-6">
           <VideoSection
             title="Maid (Netflix, Episode 1)"
             videoUrl="https://www.youtube.com/watch?v=MMIBPTNmDoI"
@@ -788,7 +788,7 @@ Thank you, and see you next week!`
         </div>
 
         {/* Video Section 2: Claudine */}
-        <div id="slide-8">
+        <div id="slide-7">
           <VideoSection
             title="Claudine (1974)"
             videoUrl="https://www.youtube.com/watch?v=ZOPy3FC-lUk"
@@ -824,7 +824,7 @@ Thank you, and see you next week!`
         </div>
 
         {/* Video Section 3: The Florida Project */}
-        <div id="slide-9">
+        <div id="slide-8">
           <VideoSection
             title="The Florida Project (2017)"
             videoUrl="https://www.youtube.com/watch?v=bvZV09_0p9k"
