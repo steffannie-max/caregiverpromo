@@ -441,7 +441,6 @@ Thank you, and see you next week!`
               key={currentSlide}
               src={slideVideos[currentSlide]}
               autoPlay
-              loop
               className="w-full h-full object-cover"
             />
           </div>
