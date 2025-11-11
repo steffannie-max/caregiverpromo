@@ -271,23 +271,6 @@ Thank you, and see you next week!`
 
   return (
     <div className="relative">
-      {/* Start Button Overlay */}
-      {!hasStarted && (
-        <div className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-sm flex items-center justify-center">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl font-bold text-primary">Week 7: Interpretivism & Constructivism</h1>
-            <p className="text-xl text-muted-foreground">Click below to begin the presentation</p>
-            <Button 
-              size="lg" 
-              onClick={() => setHasStarted(true)}
-              className="text-lg px-8 py-6"
-            >
-              Start Presentation
-            </Button>
-          </div>
-        </div>
-      )}
-
       {/* Background Music Player */}
       {hasStarted && <BackgroundMusic currentSlide={currentSlide} />}
       
@@ -492,6 +475,19 @@ Thank you, and see you next week!`
                 Exploring how our perspectives shape what we see, interpret, and understand in social research
               </p>
             </div>
+            
+            {/* Start Button */}
+            {!hasStarted && (
+              <div className="pt-8">
+                <Button 
+                  size="lg" 
+                  onClick={() => setHasStarted(true)}
+                  className="text-xl px-12 py-8 shadow-2xl hover:scale-105 transition-transform"
+                >
+                  Start Presentation
+                </Button>
+              </div>
+            )}
           </div>
         </section>
 
