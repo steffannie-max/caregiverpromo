@@ -60,15 +60,16 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
         <div className="grid gap-6">
           <div className="flex items-center gap-3">
             <h3 className="text-2xl font-semibold text-foreground">Reflection Questions</h3>
-            <div className="flex items-center gap-2 text-primary animate-pulse">
-              <span className="text-sm font-medium">Scroll down</span>
+            <div className="flex items-center gap-2 text-alert animate-pulse">
+              <span className="text-base font-black">Scroll down</span>
               <svg 
-                className="w-5 h-5 animate-bounce" 
+                className="w-6 h-6 animate-bounce" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
+                strokeWidth={3}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </div>
           </div>
