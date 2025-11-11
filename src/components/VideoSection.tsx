@@ -39,9 +39,9 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{title}</h2>
         {timestamp && (
-          <div className="mb-6 p-4 bg-primary/10 border-2 border-primary rounded-lg">
-            <p className="text-lg font-bold text-primary animate-pulse flex items-center gap-2">
-              <span>⏩</span>
+          <div className="mb-6 p-4 bg-alert/20 border-4 border-alert rounded-lg shadow-lg">
+            <p className="text-xl font-black text-alert animate-pulse flex items-center gap-3">
+              <span className="text-2xl">⏩</span>
               <span>Start at: {timestamp}</span>
             </p>
           </div>
