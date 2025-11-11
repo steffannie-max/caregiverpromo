@@ -2,6 +2,7 @@ import { PresentationSlide } from "@/components/PresentationSlide";
 import { DefinitionCard } from "@/components/DefinitionCard";
 import { VideoSection } from "@/components/VideoSection";
 import { LensCard } from "@/components/LensCard";
+import { BackgroundMusic } from "@/components/BackgroundMusic";
 import { Eye, DollarSign, Scale, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,7 +11,7 @@ import { Download, Play, Pause } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-critical-thinking.jpg";
+import heroImage from "@/assets/hero-interpretivism.jpg";
 
 const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -233,6 +234,9 @@ Thank you, and see you next week!`
 
   return (
     <div className="relative">
+      {/* Background Music Player */}
+      <BackgroundMusic currentSlide={currentSlide} />
+      
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
