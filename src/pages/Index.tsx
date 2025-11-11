@@ -652,20 +652,9 @@ Thank you, and see you next week!`
         >
           <div className="space-y-6 max-w-5xl mx-auto">
             <div className="bg-primary/10 border-2 border-primary rounded-lg p-6 mb-6">
-              <p className="text-xl text-center mb-4">
+              <p className="text-xl text-center">
                 Dr. Bryson analyzed data collected 20 years ago in two articles published 9 years apart – one in 2016 and another in 2025 – using different interpretive frameworks.
               </p>
-              <div className="text-center space-y-2">
-                <p className="text-lg font-semibold text-primary">
-                  This interview is divided into 3 sections
-                </p>
-                <p className="text-base">
-                  👉 Start by selecting <strong>Section 1</strong> below, then work through each section in order
-                </p>
-                <p className="text-sm text-muted-foreground italic">
-                  (The specific questions Dr. Bryson answers are listed under each section tab)
-                </p>
-              </div>
             </div>
             
             <Tabs defaultValue="section1" className="w-full">
