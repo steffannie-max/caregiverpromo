@@ -124,7 +124,7 @@ const ManageVideos = () => {
           <div className="text-center py-12">Loading videos...</div>
         ) : (
           <div className="space-y-6">
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((slideNum) => {
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((slideNum) => {
               const slideVideos = videosBySlide[slideNum] || [];
               return (
                 <Card key={slideNum}>

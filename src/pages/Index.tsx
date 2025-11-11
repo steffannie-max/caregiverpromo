@@ -150,7 +150,20 @@ Here's a concrete example: 'Messy home' isn't an objective fact. It's constructe
 Finally, let's contrast this with Positivism – which many of us were trained in. Positivism says that objective truth and reality can be observed and measured through empirical, scientific methods. It focuses on observable facts and quantifiable data.
 
 So a positivist approach would record: number of dirty dishes, presence of cockroaches, times child was observed outside after 10pm. These are treated as objective, measurable facts. You can see how different that is from asking what 'messy' means in different contexts.`,
-    2: `Now I want to introduce two concepts from Dr. Bryson's research that we'll be discussing more in a moment.
+    2: `Now let's talk about where these ideas came from – the intellectual history and key thinkers who shaped these paradigms.
+
+Positivism emerged first in the 19th century with Auguste Comte, who coined the term. He believed society could be studied using the same scientific methods as the natural sciences. Later, the Vienna Circle and logical positivists like A.J. Ayer pushed this further. The idea was: if we can't measure it, observe it, or verify it empirically, it's not real knowledge.
+
+Interpretivism developed as a response to positivism. Max Weber, in the early 1900s, introduced the concept of Verstehen – understanding the subjective meanings people attach to their actions. He argued you can't study humans the same way you study rocks or chemicals because humans have intentions, meanings, and consciousness.
+
+Alfred Schutz built on Weber's work, bringing in phenomenology – the study of how people experience their lived world. Schutz argued that social reality is intersubjective – it's created through our shared understandings and taken-for-granted assumptions.
+
+Then comes Constructivism, most famously articulated by Peter Berger and Thomas Luckmann in their 1966 book "The Social Construction of Reality." They showed how reality itself is socially constructed through human interaction, language, and institutions. What we take for granted as "just the way things are" is actually created and maintained through social processes.
+
+Kenneth Gergen later extended this into social constructionism, emphasizing how knowledge is created through social processes and language. And thinkers like Michel Foucault showed how power shapes what counts as knowledge and truth.
+
+So these aren't just abstract academic theories – they represent fundamental disagreements about the nature of reality, knowledge, and how we can understand the social world.`,
+    3: `Now I want to introduce two concepts from Dr. Bryson's research that we'll be discussing more in a moment.
 
 Care Capital – this is Dr. Bryson's extension of Bourdieu's social capital. She argues that mothers, especially low-income Black mothers, must accumulate specific resources – both material and symbolic – to be deemed 'good enough' by child welfare systems.
 
@@ -163,7 +176,7 @@ Poverty Governance – this concept examines how systems of rules, policies, and
 Here's what this looks like in practice: When a family's poverty – say, a messy home because mom is working 30 hours a week at minimum wage and can't keep up – when that poverty is treated as a parenting failure requiring child removal, rather than as a systemic issue requiring support... that's poverty governance.
 
 The system governs poverty by punishing poor families rather than addressing structural inequality.`,
-    3: `Alright, here's where it gets really interesting. The same 'data' – the same scene, the same interaction – produces completely different insights depending on which lens you use.
+    4: `Alright, here's where it gets really interesting. The same 'data' – the same scene, the same interaction – produces completely different insights depending on which lens you use.
 
 With a Positivist lens, you ask: What are the observable facts? What can be measured or counted? What behaviors can be documented?
 
@@ -174,7 +187,7 @@ With a Poverty Governance lens, you ask: What systems and policies shape this si
 Same situation. Three completely different sets of questions. Three completely different understandings of what's happening and what should be done about it.
 
 And this is why our theoretical frameworks matter so much. They're not just academic exercises – they literally determine what we see and what we miss.`,
-    4: `Now I'm really excited because Dr. Bryson has generously agreed to talk with us about these concepts and about her research.
+    5: `Now I'm really excited because Dr. Bryson has generously agreed to talk with us about these concepts and about her research.
 
 What's particularly fascinating about Dr. Bryson's work is that she analyzed the same dataset twice – once in 2016 and again in 2025 – using different interpretive frameworks. And she saw completely different things.
 
@@ -187,7 +200,7 @@ Dr. Bryson, thank you so much for joining us.
 Thank you so much, Dr. Bryson. That was incredibly helpful for understanding how our interpretive frameworks shape what we can see and understand.
 
 Now, let's practice. We're going to watch three short film clips, and for each one, we're going to practice looking through these different lenses.`,
-    5: `Okay, let's watch this clip from Maid. I'm going to play it, and then we'll pause and think through it using our different lenses.
+    6: `Okay, let's watch this clip from Maid. I'm going to play it, and then we'll pause and think through it using our different lenses.
 
 [PLAY VIDEO]
 
@@ -201,17 +214,17 @@ Now, I want you to work through the questions on the screen. Think about:
 - And through a poverty governance lens – what systems and rules are shaping this interaction?
 
 Take a few minutes to jot down your thoughts. There are no right or wrong answers here – the goal is to practice noticing how different lenses reveal different things.`,
-    6: `Let's watch our second clip from Claudine. Remember to skip to 1:26 for the welfare/social worker home visit scene.
+    7: `Let's watch our second clip from Claudine. Remember to skip to 1:26 for the welfare/social worker home visit scene.
 
 [PLAY VIDEO - Skip to 1:26]
 
 Now let's work through our different lenses again. What do you notice this time? How do the questions change what you see in this scene?`,
-    7: `And now our final clip from The Florida Project. Skip to 1:43 for the social worker visit to Halley in the motel.
+    8: `And now our final clip from The Florida Project. Skip to 1:43 for the social worker visit to Halley in the motel.
 
 [PLAY VIDEO - Skip to 1:43]
 
 Take your time with the analysis questions. Notice how each lens brings different aspects into focus.`,
-    8: `And that's it for today. I've included all our references here, including the three films we watched.
+    9: `And that's it for today. I've included all our references here, including the three films we watched.
 
 The key takeaway: Your theoretical lens isn't just an academic choice – it fundamentally shapes what you can see, what you consider important, and what interventions you imagine.
 
@@ -247,7 +260,7 @@ Thank you, and see you next week!`
             >
               📝 {showNotes ? "Hide" : "Show"} Notes
             </Button>
-            {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((idx) => (
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((idx) => (
               <Button
                 key={idx}
                 variant={currentSlide === idx ? "default" : "outline"}
@@ -391,9 +404,54 @@ Thank you, and see you next week!`
           </div>
         </PresentationSlide>
 
-        {/* Slide 3: More Definitions */}
+        {/* Slide 3: Historical & Philosophical Foundations */}
         <PresentationSlide
           id="slide-2"
+          title="Historical & Philosophical Foundations"
+          variant="gradient"
+        >
+          <div className="space-y-8">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-primary/10 p-6 rounded-lg border-2 border-primary">
+                <h3 className="text-xl font-bold text-primary mb-4">Positivism</h3>
+                <ul className="space-y-3 text-sm">
+                  <li><strong>Auguste Comte (1830s)</strong><br />Founder; believed society could be studied using scientific methods</li>
+                  <li><strong>Vienna Circle (1920s-30s)</strong><br />Logical positivism; only empirically verifiable statements have meaning</li>
+                  <li><strong>Key idea:</strong> Objective reality exists and can be measured</li>
+                </ul>
+              </div>
+
+              <div className="bg-secondary/10 p-6 rounded-lg border-2 border-secondary">
+                <h3 className="text-xl font-bold text-secondary mb-4">Interpretivism</h3>
+                <ul className="space-y-3 text-sm">
+                  <li><strong>Max Weber (early 1900s)</strong><br />Introduced <em>Verstehen</em> - understanding subjective meanings</li>
+                  <li><strong>Alfred Schutz (1930s-50s)</strong><br />Phenomenology; studied lived experience and intersubjectivity</li>
+                  <li><strong>Key idea:</strong> Must understand the meanings people attach to actions</li>
+                </ul>
+              </div>
+
+              <div className="bg-accent/10 p-6 rounded-lg border-2 border-accent">
+                <h3 className="text-xl font-bold text-accent mb-4">Constructivism</h3>
+                <ul className="space-y-3 text-sm">
+                  <li><strong>Berger & Luckmann (1966)</strong><br />"The Social Construction of Reality" - foundational text</li>
+                  <li><strong>Kenneth Gergen (1980s-90s)</strong><br />Social constructionism; knowledge created through language</li>
+                  <li><strong>Michel Foucault</strong><br />Power shapes what counts as knowledge and truth</li>
+                  <li><strong>Key idea:</strong> Reality itself is socially constructed</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-card p-6 rounded-lg border border-border">
+              <p className="text-lg text-center italic">
+                "These represent fundamental disagreements about the nature of reality, knowledge, and how we can understand the social world."
+              </p>
+            </div>
+          </div>
+        </PresentationSlide>
+
+        {/* Slide 4: More Definitions */}
+        <PresentationSlide
+          id="slide-3"
           title="Additional Key Concepts"
         >
           <div className="grid gap-6">
@@ -412,9 +470,9 @@ Thank you, and see you next week!`
           </div>
         </PresentationSlide>
 
-        {/* Slide 4: How Lenses Change What We See */}
+        {/* Slide 5: How Lenses Change What We See */}
         <PresentationSlide
-          id="slide-3"
+          id="slide-4"
           title="How Different Lenses Change What We Notice"
           variant="accent"
         >
@@ -458,9 +516,9 @@ Thank you, and see you next week!`
           </div>
         </PresentationSlide>
 
-        {/* Slide 5: Dr. Bryson Interview */}
+        {/* Slide 6: Dr. Bryson Interview */}
         <PresentationSlide
-          id="slide-4"
+          id="slide-5"
           title="Interview with Dr. Bryson"
           variant="gradient"
         >
@@ -567,7 +625,7 @@ Thank you, and see you next week!`
         </PresentationSlide>
 
         {/* Video Section 1: Maid */}
-        <div id="slide-5">
+        <div id="slide-6">
           <VideoSection
             title="Maid (Netflix, Episode 1)"
             videoUrl="https://www.youtube.com/watch?v=MMIBPTNmDoI"
@@ -639,7 +697,7 @@ Thank you, and see you next week!`
         </div>
 
         {/* Video Section 3: The Florida Project */}
-        <div id="slide-7">
+        <div id="slide-8">
           <VideoSection
             title="The Florida Project (2017)"
             videoUrl="https://www.youtube.com/watch?v=bvZV09_0p9k"
@@ -674,9 +732,9 @@ Thank you, and see you next week!`
           />
         </div>
 
-        {/* Slide 9: References */}
+        {/* Slide 10: References */}
         <PresentationSlide
-          id="slide-8"
+          id="slide-9"
           title="References"
         >
           <div className="space-y-4 text-left max-w-4xl mx-auto">

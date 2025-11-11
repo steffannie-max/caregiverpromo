@@ -41,7 +41,20 @@ Here's a concrete example: 'Messy home' isn't an objective fact. It's constructe
 Finally, let's contrast this with Positivism – which many of us were trained in. Positivism says that objective truth and reality can be observed and measured through empirical, scientific methods. It focuses on observable facts and quantifiable data.
 
 So a positivist approach would record: number of dirty dishes, presence of cockroaches, times child was observed outside after 10pm. These are treated as objective, measurable facts. You can see how different that is from asking what 'messy' means in different contexts.`,
-    2: `Now I want to introduce two concepts from Dr. Bryson's research that we'll be discussing more in a moment.
+    2: `Now let's talk about where these ideas came from – the intellectual history and key thinkers who shaped these paradigms.
+
+Positivism emerged first in the 19th century with Auguste Comte, who coined the term. He believed society could be studied using the same scientific methods as the natural sciences. Later, the Vienna Circle and logical positivists like A.J. Ayer pushed this further. The idea was: if we can't measure it, observe it, or verify it empirically, it's not real knowledge.
+
+Interpretivism developed as a response to positivism. Max Weber, in the early 1900s, introduced the concept of Verstehen – understanding the subjective meanings people attach to their actions. He argued you can't study humans the same way you study rocks or chemicals because humans have intentions, meanings, and consciousness.
+
+Alfred Schutz built on Weber's work, bringing in phenomenology – the study of how people experience their lived world. Schutz argued that social reality is intersubjective – it's created through our shared understandings and taken-for-granted assumptions.
+
+Then comes Constructivism, most famously articulated by Peter Berger and Thomas Luckmann in their 1966 book "The Social Construction of Reality." They showed how reality itself is socially constructed through human interaction, language, and institutions. What we take for granted as "just the way things are" is actually created and maintained through social processes.
+
+Kenneth Gergen later extended this into social constructionism, emphasizing how knowledge is created through social processes and language. And thinkers like Michel Foucault showed how power shapes what counts as knowledge and truth.
+
+So these aren't just abstract academic theories – they represent fundamental disagreements about the nature of reality, knowledge, and how we can understand the social world.`,
+    3: `Now I want to introduce two concepts from Dr. Bryson's research that we'll be discussing more in a moment.
 
 Care Capital – this is Dr. Bryson's extension of Bourdieu's social capital. She argues that mothers, especially low-income Black mothers, must accumulate specific resources – both material and symbolic – to be deemed 'good enough' by child welfare systems.
 
@@ -54,7 +67,7 @@ Poverty Governance – this concept examines how systems of rules, policies, and
 Here's what this looks like in practice: When a family's poverty – say, a messy home because mom is working 30 hours a week at minimum wage and can't keep up – when that poverty is treated as a parenting failure requiring child removal, rather than as a systemic issue requiring support... that's poverty governance.
 
 The system governs poverty by punishing poor families rather than addressing structural inequality.`,
-    3: `Alright, here's where it gets really interesting. The same 'data' – the same scene, the same interaction – produces completely different insights depending on which lens you use.
+    4: `Alright, here's where it gets really interesting. The same 'data' – the same scene, the same interaction – produces completely different insights depending on which lens you use.
 
 With a Positivist lens, you ask: What are the observable facts? What can be measured or counted? What behaviors can be documented?
 
@@ -65,7 +78,7 @@ With a Poverty Governance lens, you ask: What systems and policies shape this si
 Same situation. Three completely different sets of questions. Three completely different understandings of what's happening and what should be done about it.
 
 And this is why our theoretical frameworks matter so much. They're not just academic exercises – they literally determine what we see and what we miss.`,
-    4: `Now I'm really excited because Dr. Bryson has generously agreed to talk with us about these concepts and about her research.
+    5: `Now I'm really excited because Dr. Bryson has generously agreed to talk with us about these concepts and about her research.
 
 What's particularly fascinating about Dr. Bryson's work is that she analyzed the same dataset twice – once in 2016 and again in 2025 – using different interpretive frameworks. And she saw completely different things.
 
@@ -78,7 +91,7 @@ Dr. Bryson, thank you so much for joining us.
 Thank you so much, Dr. Bryson. That was incredibly helpful for understanding how our interpretive frameworks shape what we can see and understand.
 
 Now, let's practice. We're going to watch three short film clips, and for each one, we're going to practice looking through these different lenses.`,
-    5: `Okay, let's watch this clip from Maid. I'm going to play it, and then we'll pause and think through it using our different lenses.
+    6: `Okay, let's watch this clip from Maid. I'm going to play it, and then we'll pause and think through it using our different lenses.
 
 [PLAY VIDEO]
 
@@ -92,17 +105,17 @@ Now, I want you to work through the questions on the screen. Think about:
 - And through a poverty governance lens – what systems and rules are shaping this interaction?
 
 Take a few minutes to jot down your thoughts. There are no right or wrong answers here – the goal is to practice noticing how different lenses reveal different things.`,
-    6: `Let's watch our second clip from Claudine. Remember to skip to 1:26 for the welfare/social worker home visit scene.
+    7: `Let's watch our second clip from Claudine. Remember to skip to 1:26 for the welfare/social worker home visit scene.
 
 [PLAY VIDEO - Skip to 1:26]
 
 Now let's work through our different lenses again. What do you notice this time? How do the questions change what you see in this scene?`,
-    7: `And now our final clip from The Florida Project. Skip to 1:43 for the social worker visit to Halley in the motel.
+    8: `And now our final clip from The Florida Project. Skip to 1:43 for the social worker visit to Halley in the motel.
 
 [PLAY VIDEO - Skip to 1:43]
 
 Take your time with the analysis questions. Notice how each lens brings different aspects into focus.`,
-    8: `And that's it for today. I've included all our references here, including the three films we watched.
+    9: `And that's it for today. I've included all our references here, including the three films we watched.
 
 The key takeaway: Your theoretical lens isn't just an academic choice – it fundamentally shapes what you can see, what you consider important, and what interventions you imagine.
 
@@ -167,7 +180,7 @@ Thank you, and see you next week!`
   }, [isRecording]);
 
   const changeSlide = (newSlide: number) => {
-    const slide = Math.max(0, Math.min(8, newSlide));
+    const slide = Math.max(0, Math.min(9, newSlide));
     setCurrentSlide(slide);
     localStorage.setItem('currentSlide', slide.toString());
     window.dispatchEvent(new StorageEvent('storage', {
@@ -331,13 +344,13 @@ Thank you, and see you next week!`
               </Button>
               <div className="text-center flex-1">
                 <div className="text-3xl font-bold text-primary">{currentSlide + 1}</div>
-                <div className="text-xs text-muted-foreground">of 9</div>
+                <div className="text-xs text-muted-foreground">of 10</div>
               </div>
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => changeSlide(currentSlide + 1)}
-                disabled={currentSlide === 8}
+                disabled={currentSlide === 9}
               >
                 <SkipForward className="h-4 w-4" />
               </Button>
@@ -345,7 +358,7 @@ Thank you, and see you next week!`
             
             {/* Slide Grid */}
             <div className="grid grid-cols-3 gap-2">
-              {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((idx) => (
+              {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((idx) => (
                 <Button
                   key={idx}
                   size="sm"
