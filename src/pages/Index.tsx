@@ -264,7 +264,7 @@ const Index = () => {
           <VideoSection
             title="Claudine (1974)"
             videoUrl="https://www.youtube.com/watch?v=ZOPy3FC-lUk"
-            timestamp="1:26 - Welfare/social worker home visit"
+            timestamp="⏩ Skip to 1:26 - Welfare/social worker home visit"
             questions={[
               {
                 id: "claud-interp",
@@ -300,7 +300,7 @@ const Index = () => {
           <VideoSection
             title="The Florida Project (2017)"
             videoUrl="https://www.youtube.com/watch?v=bvZV09_0p9k"
-            timestamp="1:43 - Social worker visit to Halley in motel"
+            timestamp="⏩ Skip to 1:43 - Social worker visit to Halley in motel"
             questions={[
               {
                 id: "florida-interp",
