@@ -652,6 +652,12 @@ Thank you, and see you next week!`
           variant="gradient"
         >
           <div className="space-y-6 max-w-5xl mx-auto">
+            <div className="text-center mb-8">
+              <p className="text-xl md:text-2xl font-bold text-primary animate-pulse">
+                ⬇️ Scroll down and press play to hear Dr. Bryson's message ⬇️
+              </p>
+            </div>
+            
             {/* Film Frame Container */}
             <div className="relative">
               {/* Film Strip Border - Top */}
