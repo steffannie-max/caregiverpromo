@@ -696,17 +696,7 @@ Thank you, and see you next week!`
 
               {/* Main Content */}
               <div className="bg-card border-8 border-primary p-8 shadow-2xl relative">
-                <div className="space-y-6">
-                  {/* Introduction */}
-                  <div className="bg-primary/10 border-2 border-primary rounded-lg p-6">
-                    <p className="text-xl text-center mb-4">
-                      Dr. Bryson analyzed data collected 20 years ago in two articles published 9 years apart – one in 2016 and another in 2025 – using different interpretive frameworks.
-                    </p>
-                    <p className="text-lg text-center text-foreground">
-                      Dr. Bryson brings decades of experience in social work research, helping students understand the complexity of human experiences through multiple theoretical lenses.
-                    </p>
-                  </div>
-
+                <div className="space-y-8">
                   <div className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
                     <p className="text-lg italic text-foreground">
                       "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
@@ -714,36 +704,23 @@ Thank you, and see you next week!`
                     <p className="mt-4 text-right font-semibold text-primary">— Dr. Bryson</p>
                   </div>
 
-                  {/* Interview Questions and Video */}
-                  <div className="bg-card/50 p-6 rounded-lg border border-border">
-                    <h3 className="text-xl md:text-2xl font-semibold mb-4 text-primary">Dr. Bryson's Interview</h3>
-                    <p className="text-sm font-semibold text-accent mb-3">Dr. Bryson answers these questions:</p>
-                    <ol className="space-y-3 list-decimal list-inside text-left mb-4">
-                      <li className="text-sm md:text-base">What made you return to data from 20 years ago for your 2025 article, and what did you see differently with the new lens?</li>
-                      <li className="text-sm md:text-base">Can you give a specific example where "care capital" (2016) vs "poverty governance" (2025) revealed different insights from the same data?</li>
-                      <li className="text-sm md:text-base">Can you explain "care capital" and what mothers had to demonstrate to be seen as "good enough"?</li>
-                      <li className="text-sm md:text-base">How are meanings like "neglect" socially constructed differently for poor vs wealthy families?</li>
-                      <li className="text-sm md:text-base">How does using an interpretivist/constructivist approach with your "poverty governance" lens change what you can discover as a researcher?</li>
-                      <li className="text-sm md:text-base">What advice would you give researchers about choosing theoretical lenses?</li>
-                    </ol>
-                    
-                    <div className="mt-6">
-                      {interviewVideos.section1 ? (
-                        <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                          <video
-                            controls
-                            className="w-full h-full"
-                            src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section1.file_path).data.publicUrl}
-                          />
-                        </div>
-                      ) : (
-                        <div className="p-4 bg-muted/50 rounded-lg text-center">
-                          <p className="text-sm font-semibold text-muted-foreground">
-                            No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                  {/* Video - Front and Center */}
+                  <div className="max-w-5xl mx-auto">
+                    {interviewVideos.section1 ? (
+                      <div className="aspect-video bg-muted rounded-lg overflow-hidden shadow-2xl border-4 border-primary">
+                        <video
+                          controls
+                          className="w-full h-full"
+                          src={supabase.storage.from('interview-videos').getPublicUrl(interviewVideos.section1.file_path).data.publicUrl}
+                        />
+                      </div>
+                    ) : (
+                      <div className="p-8 bg-muted/50 rounded-lg text-center border-2 border-dashed border-border">
+                        <p className="text-lg font-semibold text-muted-foreground">
+                          No video uploaded yet. <Link to="/upload-videos" className="text-primary underline">Upload video</Link>
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
