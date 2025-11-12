@@ -648,7 +648,7 @@ Thank you, and see you next week!`
         {/* Slide 6: Dr. Bryson Interview */}
         <PresentationSlide
           id="slide-5"
-          title="Interview with Dr. Bryson"
+          title="Dr. Bryson"
           variant="gradient"
         >
           <div className="space-y-6 max-w-5xl mx-auto">
