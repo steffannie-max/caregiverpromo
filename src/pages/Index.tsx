@@ -692,11 +692,11 @@ Thank you, and see you next week!`
               {/* Main Content */}
               <div className="bg-card border-8 border-primary p-8 shadow-2xl relative">
                 <div className="space-y-8">
-                  <div className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
+                  <div className="p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-2 border-primary">
                     <p className="text-sm italic text-foreground">
                       "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
                     </p>
-                    <p className="mt-3 text-right text-sm font-semibold text-primary">— Dr. Bryson</p>
+                    <p className="mt-2 text-right text-sm font-semibold text-primary">— Dr. Bryson</p>
                   </div>
 
                   {/* Video - Front and Center */}
