@@ -648,12 +648,12 @@ Thank you, and see you next week!`
         {/* Slide 6: Dr. Bryson Interview */}
         <PresentationSlide
           id="slide-5"
-          title="Dr. Bryson"
+          title="Let's Hear from Dr. Bryson"
           variant="gradient"
         >
           <div className="space-y-6 max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <p className="text-xl md:text-2xl font-bold text-primary animate-pulse">
+              <p className="text-xl md:text-2xl font-bold text-accent animate-pulse drop-shadow-lg">
                 ⬇️ Scroll down and press play to hear Dr. Bryson's message ⬇️
               </p>
             </div>
@@ -692,11 +692,11 @@ Thank you, and see you next week!`
               {/* Main Content */}
               <div className="bg-card border-8 border-primary p-8 shadow-2xl relative">
                 <div className="space-y-8">
-                  <div className="p-4 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-2 border-primary">
-                    <p className="text-sm italic text-foreground">
+                  <div className="p-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l border-primary">
+                    <p className="text-xs italic text-foreground">
                       "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
                     </p>
-                    <p className="mt-2 text-right text-sm font-semibold text-primary">— Dr. Bryson</p>
+                    <p className="mt-1 text-right text-xs font-semibold text-primary">— Dr. Bryson</p>
                   </div>
 
                   {/* Video - Front and Center */}
