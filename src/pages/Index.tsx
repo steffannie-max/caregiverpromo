@@ -682,26 +682,15 @@ Thank you, and see you next week!`
                 ))}
               </div>
 
-              {/* Clapperboard Header */}
-              <div className="relative -top-4 mb-4">
-                <div className="bg-background border-4 border-primary p-4 transform -rotate-1 shadow-2xl">
-                  <div className="bg-gradient-to-r from-alert via-primary to-alert h-12 flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-repeating-linear-gradient-45deg bg-black/20 animate-pulse"></div>
-                    <div className="text-background font-black text-2xl tracking-widest z-10 flex items-center gap-2">
-                      🎬 FEATURED INSTRUCTOR 🎬
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               {/* Main Content */}
               <div className="bg-card border-8 border-primary p-8 shadow-2xl relative">
                 <div className="space-y-8">
                   <div className="p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border-l-4 border-primary">
-                    <p className="text-lg italic text-foreground">
+                    <p className="text-sm italic text-foreground">
                       "Understanding poverty isn't just about collecting data—it's about recognizing the humanity, complexity, and systemic challenges that shape people's lives. Through critical thinking, we become better researchers and advocates."
                     </p>
-                    <p className="mt-4 text-right font-semibold text-primary">— Dr. Bryson</p>
+                    <p className="mt-3 text-right text-sm font-semibold text-primary">— Dr. Bryson</p>
                   </div>
 
                   {/* Video - Front and Center */}
