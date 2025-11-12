@@ -128,7 +128,7 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
 
         <div className="grid gap-6">
           <div className="flex items-center gap-3">
-            <h3 className="text-2xl font-semibold text-foreground">Reflection Questions</h3>
+            <h3 className="text-2xl font-semibold text-foreground">(OPTIONAL) Reflection Questions</h3>
             <div className="flex items-center gap-2 text-alert animate-pulse">
               <span className="text-base font-black">Scroll down</span>
               <svg 
