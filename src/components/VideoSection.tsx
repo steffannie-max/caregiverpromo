@@ -1,7 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface Question {
   id: string;
@@ -18,9 +22,89 @@ interface VideoSectionProps {
 
 export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSectionProps) => {
   const [responses, setResponses] = useState<Record<string, string>>({});
+  const [respondentName, setRespondentName] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+  const { toast } = useToast();
+
+  // Load saved responses from localStorage
+  useEffect(() => {
+    const savedResponses = localStorage.getItem(`responses_${title}`);
+    const savedName = localStorage.getItem('respondent_name');
+    if (savedResponses) {
+      setResponses(JSON.parse(savedResponses));
+    }
+    if (savedName) {
+      setRespondentName(savedName);
+    }
+  }, [title]);
 
   const handleResponseChange = (questionId: string, value: string) => {
-    setResponses(prev => ({ ...prev, [questionId]: value }));
+    const newResponses = { ...responses, [questionId]: value };
+    setResponses(newResponses);
+    // Auto-save to localStorage
+    localStorage.setItem(`responses_${title}`, JSON.stringify(newResponses));
+  };
+
+  const handleNameChange = (value: string) => {
+    setRespondentName(value);
+    localStorage.setItem('respondent_name', value);
+  };
+
+  const saveResponses = async () => {
+    setIsSaving(true);
+    try {
+      const responsesToSave = Object.entries(responses)
+        .filter(([_, response]) => response.trim())
+        .map(([questionId, responseText]) => {
+          const question = questions.find(q => q.id === questionId);
+          return {
+            question_id: questionId,
+            question_text: question?.text || '',
+            lens: question?.lens || '',
+            response_text: responseText,
+            respondent_name: respondentName.trim() || null,
+            video_title: title
+          };
+        });
+
+      if (responsesToSave.length === 0) {
+        toast({
+          title: "No responses to save",
+          description: "Please write at least one response before saving.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      const { error } = await supabase
+        .from('video_responses')
+        .insert(responsesToSave);
+
+      if (error) throw error;
+
+      toast({
+        title: "Responses saved!",
+        description: "Your responses have been submitted successfully."
+      });
+    } catch (error) {
+      console.error('Error saving responses:', error);
+      toast({
+        title: "Error saving responses",
+        description: "Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const clearResponses = () => {
+    setResponses({});
+    localStorage.removeItem(`responses_${title}`);
+    toast({
+      title: "Responses cleared",
+      description: "All your responses have been cleared."
+    });
   };
 
   // Extract YouTube video ID from URL
@@ -58,6 +142,19 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
         </div>
 
         <div className="grid gap-6">
+          <div className="mb-6 p-4 bg-card rounded-lg border">
+            <Label htmlFor="respondent-name" className="text-sm font-medium mb-2 block">
+              Your name (optional - leave blank to stay anonymous)
+            </Label>
+            <Input
+              id="respondent-name"
+              placeholder="Enter your name..."
+              value={respondentName}
+              onChange={(e) => handleNameChange(e.target.value)}
+              className="max-w-md"
+            />
+          </div>
+
           <div className="flex items-center gap-3">
             <h3 className="text-2xl font-semibold text-foreground">Reflection Questions</h3>
             <div className="flex items-center gap-2 text-alert animate-pulse">
@@ -92,6 +189,23 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
               />
             </Card>
           ))}
+
+          <div className="flex gap-4 justify-end mt-6">
+            <Button 
+              variant="outline" 
+              onClick={clearResponses}
+              disabled={isSaving}
+            >
+              Clear All
+            </Button>
+            <Button 
+              onClick={saveResponses}
+              disabled={isSaving}
+              className="min-w-32"
+            >
+              {isSaving ? "Saving..." : "Save Responses"}
+            </Button>
+          </div>
         </div>
       </div>
     </section>

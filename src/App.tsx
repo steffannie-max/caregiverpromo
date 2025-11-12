@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import UploadVideos from "./pages/UploadVideos";
 import ManageVideos from "./pages/ManageVideos";
 import ManageMusic from "./pages/ManageMusic";
+import ViewResponses from "./pages/ViewResponses";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/upload-videos" element={<UploadVideos />} />
           <Route path="/manage-videos" element={<ManageVideos />} />
           <Route path="/manage-music" element={<ManageMusic />} />
+          <Route path="/view-responses" element={<ViewResponses />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

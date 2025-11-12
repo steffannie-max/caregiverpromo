@@ -98,6 +98,39 @@ export type Database = {
         }
         Relationships: []
       }
+      video_responses: {
+        Row: {
+          created_at: string
+          id: string
+          lens: string
+          question_id: string
+          question_text: string
+          respondent_name: string | null
+          response_text: string
+          video_title: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          lens: string
+          question_id: string
+          question_text: string
+          respondent_name?: string | null
+          response_text: string
+          video_title: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          lens?: string
+          question_id?: string
+          question_text?: string
+          respondent_name?: string | null
+          response_text?: string
+          video_title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

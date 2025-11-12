@@ -316,6 +316,16 @@ Thank you, and see you next week!`
                   Presenter Mode
                 </Button>
                 <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className="mr-2"
+                >
+                  <Link to="/view-responses">
+                    📊 View Responses
+                  </Link>
+                </Button>
+                <Button
                   variant={showNotes ? "default" : "outline"}
                   size="sm"
                   onClick={() => setShowNotes(!showNotes)}
