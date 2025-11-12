@@ -651,11 +651,33 @@ Thank you, and see you next week!`
           title="Let's Hear from Dr. Bryson"
           variant="gradient"
         >
-          <div className="space-y-6 max-w-5xl mx-auto">
+          <div className="space-y-6 max-w-5xl mx-auto relative">
             <div className="text-center mb-8">
               <p className="text-xl md:text-2xl font-bold text-white bg-accent px-6 py-3 rounded-lg inline-block animate-pulse drop-shadow-2xl">
                 ⬇️ Scroll down and press play to hear Dr. Bryson's message ⬇️
               </p>
+            </div>
+            
+            {/* Navigation Buttons */}
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between items-center pointer-events-none z-10">
+              <button
+                onClick={() => document.getElementById('slide-4')?.scrollIntoView({ behavior: 'smooth' })}
+                className="pointer-events-auto bg-primary hover:bg-primary/90 text-primary-foreground p-4 rounded-full shadow-lg transition-all hover:scale-110 ml-4"
+                aria-label="Previous slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                onClick={() => document.getElementById('slide-6')?.scrollIntoView({ behavior: 'smooth' })}
+                className="pointer-events-auto bg-primary hover:bg-primary/90 text-primary-foreground p-4 rounded-full shadow-lg transition-all hover:scale-110 mr-4"
+                aria-label="Next slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
             </div>
             
             {/* Film Frame Container */}
