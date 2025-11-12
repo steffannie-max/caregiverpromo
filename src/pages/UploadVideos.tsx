@@ -119,10 +119,27 @@ const UploadVideos = () => {
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      const maxSize = 500 * 1024 * 1024; // 500MB
+      const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      
+      if (file.size > maxSize) {
+        toast({
+          title: "File too large",
+          description: `Your file (${fileSizeMB}MB) exceeds the 500MB limit. Please compress the video or split it into smaller parts.`,
+          variant: "destructive"
+        });
+        return;
+      }
+      
       setRecordedBlobs(prev => ({ ...prev, [currentSection]: file }));
       if (videoPreviewRef.current) {
         videoPreviewRef.current.src = URL.createObjectURL(file);
       }
+      
+      toast({
+        title: "File ready",
+        description: `Video loaded (${fileSizeMB}MB). Click "Save Video" to upload.`
+      });
     }
   };
 
@@ -132,6 +149,17 @@ const UploadVideos = () => {
       toast({
         title: "No video",
         description: "Please record or select a video first",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const maxSize = 500 * 1024 * 1024; // 500MB
+    if (blob.size > maxSize) {
+      const fileSizeMB = (blob.size / (1024 * 1024)).toFixed(2);
+      toast({
+        title: "File too large",
+        description: `Your video (${fileSizeMB}MB) exceeds the 500MB limit. Please record a shorter video.`,
         variant: "destructive"
       });
       return;
@@ -185,9 +213,13 @@ const UploadVideos = () => {
       });
       fetchExistingVideos();
     } catch (error: any) {
+      const errorMessage = error.message?.includes("exceeded the maximum")
+        ? "File size exceeds storage limit. The maximum file size is 500MB."
+        : error.message;
+      
       toast({
         title: "Upload failed",
-        description: error.message,
+        description: errorMessage,
         variant: "destructive"
       });
     } finally {
