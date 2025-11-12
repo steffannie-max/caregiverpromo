@@ -653,7 +653,7 @@ Thank you, and see you next week!`
         >
           <div className="space-y-6 max-w-5xl mx-auto">
             <div className="text-center mb-8">
-              <p className="text-xl md:text-2xl font-bold text-accent animate-pulse drop-shadow-lg">
+              <p className="text-xl md:text-2xl font-bold text-white bg-accent px-6 py-3 rounded-lg inline-block animate-pulse drop-shadow-2xl">
                 ⬇️ Scroll down and press play to hear Dr. Bryson's message ⬇️
               </p>
             </div>
