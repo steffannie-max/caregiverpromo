@@ -3,7 +3,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -26,55 +26,36 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
   const [isSaving, setIsSaving] = useState(false);
   const { toast } = useToast();
 
-  // Load saved responses from localStorage
-  useEffect(() => {
-    const savedResponses = localStorage.getItem(`responses_${title}`);
-    const savedName = localStorage.getItem('respondent_name');
-    if (savedResponses) {
-      setResponses(JSON.parse(savedResponses));
-    }
-    if (savedName) {
-      setRespondentName(savedName);
-    }
-  }, [title]);
-
   const handleResponseChange = (questionId: string, value: string) => {
-    const newResponses = { ...responses, [questionId]: value };
-    setResponses(newResponses);
-    // Auto-save to localStorage
-    localStorage.setItem(`responses_${title}`, JSON.stringify(newResponses));
+    setResponses(prev => ({ ...prev, [questionId]: value }));
   };
 
-  const handleNameChange = (value: string) => {
-    setRespondentName(value);
-    localStorage.setItem('respondent_name', value);
-  };
+  const handleSaveResponses = async () => {
+    const filledResponses = Object.entries(responses).filter(([_, value]) => value.trim());
+    
+    if (filledResponses.length === 0) {
+      toast({
+        title: "No responses to save",
+        description: "Please answer at least one question before saving.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-  const saveResponses = async () => {
     setIsSaving(true);
-    try {
-      const responsesToSave = Object.entries(responses)
-        .filter(([_, response]) => response.trim())
-        .map(([questionId, responseText]) => {
-          const question = questions.find(q => q.id === questionId);
-          return {
-            question_id: questionId,
-            question_text: question?.text || '',
-            lens: question?.lens || '',
-            response_text: responseText,
-            respondent_name: respondentName.trim() || null,
-            video_title: title
-          };
-        });
 
-      if (responsesToSave.length === 0) {
-        toast({
-          title: "No responses to save",
-          description: "Please write at least one response before saving.",
-          variant: "destructive"
-        });
-        return;
-      }
+    try {
+      const responsesToSave = filledResponses.map(([questionId, responseText]) => {
+        const question = questions.find(q => q.id === questionId);
+        return {
+          question_id: questionId,
+          question_text: question?.text || "",
+          lens: question?.lens || "",
+          response_text: responseText,
+          respondent_name: respondentName.trim() || null,
+          video_title: title,
+        };
+      });
 
       const { error } = await supabase
         .from('video_responses')
@@ -84,26 +65,30 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
 
       toast({
         title: "Responses saved!",
-        description: "Your responses have been submitted successfully."
+        description: `${filledResponses.length} response(s) saved successfully.`,
       });
+      
+      // Clear the form after successful save
+      setResponses({});
+      setRespondentName("");
     } catch (error) {
       console.error('Error saving responses:', error);
       toast({
         title: "Error saving responses",
         description: "Please try again.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSaving(false);
     }
   };
 
-  const clearResponses = () => {
+  const handleClearResponses = () => {
     setResponses({});
-    localStorage.removeItem(`responses_${title}`);
+    setRespondentName("");
     toast({
       title: "Responses cleared",
-      description: "All your responses have been cleared."
+      description: "All your responses have been cleared.",
     });
   };
 
@@ -142,19 +127,6 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
         </div>
 
         <div className="grid gap-6">
-          <div className="mb-6 p-4 bg-card rounded-lg border">
-            <Label htmlFor="respondent-name" className="text-sm font-medium mb-2 block">
-              Your name (optional - leave blank to stay anonymous)
-            </Label>
-            <Input
-              id="respondent-name"
-              placeholder="Enter your name..."
-              value={respondentName}
-              onChange={(e) => handleNameChange(e.target.value)}
-              className="max-w-md"
-            />
-          </div>
-
           <div className="flex items-center gap-3">
             <h3 className="text-2xl font-semibold text-foreground">Reflection Questions</h3>
             <div className="flex items-center gap-2 text-alert animate-pulse">
@@ -170,6 +142,7 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
               </svg>
             </div>
           </div>
+          
           {questions.map((question) => (
             <Card key={question.id} className="p-6 hover:shadow-lg transition-shadow">
               <div className="mb-2">
@@ -190,22 +163,43 @@ export const VideoSection = ({ title, videoUrl, timestamp, questions }: VideoSec
             </Card>
           ))}
 
-          <div className="flex gap-4 justify-end mt-6">
-            <Button 
-              variant="outline" 
-              onClick={clearResponses}
-              disabled={isSaving}
-            >
-              Clear All
-            </Button>
-            <Button 
-              onClick={saveResponses}
-              disabled={isSaving}
-              className="min-w-32"
-            >
-              {isSaving ? "Saving..." : "Save Responses"}
-            </Button>
-          </div>
+          {/* Save Section */}
+          <Card className="p-6 bg-accent/5 border-2 border-accent">
+            <div className="space-y-4">
+              <div>
+                <Label htmlFor="respondent-name" className="text-sm font-medium mb-2 block">
+                  Your Name (optional - leave blank to submit anonymously)
+                </Label>
+                <Input
+                  id="respondent-name"
+                  placeholder="Enter your name or leave blank"
+                  value={respondentName}
+                  onChange={(e) => setRespondentName(e.target.value)}
+                  className="max-w-md"
+                />
+              </div>
+              <div className="flex gap-3">
+                <Button 
+                  onClick={handleSaveResponses}
+                  disabled={isSaving}
+                  size="lg"
+                  className="font-semibold"
+                >
+                  {isSaving ? "Saving..." : "Save Responses"}
+                </Button>
+                <Button 
+                  onClick={handleClearResponses}
+                  variant="outline"
+                  size="lg"
+                >
+                  Clear All
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Your responses will be saved and can be reviewed by the instructor.
+              </p>
+            </div>
+          </Card>
         </div>
       </div>
     </section>
