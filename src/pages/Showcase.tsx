@@ -381,7 +381,7 @@ const Showcase = () => {
       <footer className="border-t border-border py-10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 text-sm text-muted-foreground">
           <p>Sample module by Steffannie Roache, MSW — built for Oregon Care Partners review.</p>
-          <Link to="/" className="font-semibold text-primary hover:underline">
+          <Link to="/course" className="font-semibold text-primary hover:underline">
             Back to the lenses presentation
           </Link>
         </div>
