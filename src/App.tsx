@@ -15,12 +15,16 @@ import Showcase from "./pages/Showcase";
 
 const queryClient = new QueryClient();
 
+// Vite's BASE_URL has a trailing slash; React Router's basename should not.
+const basename =
+  import.meta.env.BASE_URL === "/" ? "/" : import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/presenter" element={<PresenterView />} />
