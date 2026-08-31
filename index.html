@@ -12,6 +12,16 @@
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- GitHub Pages SPA redirect handler: 404.html forwards the original route via ?redirect= -->
+    <script>
+      (function () {
+        var redirect = new URLSearchParams(window.location.search).get('redirect');
+        if (redirect) {
+          window.history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
   </head>
 
   <body>
