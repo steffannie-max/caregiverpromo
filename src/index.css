@@ -105,6 +105,34 @@ All colors MUST be HSL.
 }
 
 @layer base {
+  /* Scoped palette for the Oregon Care Partners training showcase */
+  .showcase-theme {
+    --background: 40 40% 98%;
+    --foreground: 195 45% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 195 45% 12%;
+
+    --primary: 187 62% 26%;
+    --primary-foreground: 40 40% 98%;
+
+    --secondary: 160 24% 44%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 165 24% 94%;
+    --muted-foreground: 195 20% 38%;
+
+    --accent: 34 92% 58%;
+    --accent-foreground: 195 45% 12%;
+
+    --border: 170 20% 87%;
+    --input: 170 20% 87%;
+    --ring: 187 62% 34%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(187 62% 26%), hsl(160 40% 48%));
+    --gradient-accent: linear-gradient(135deg, hsl(34 92% 58%), hsl(46 96% 66%));
+  }
+
   * {
     @apply border-border;
   }
