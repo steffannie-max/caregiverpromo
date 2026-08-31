@@ -17,7 +17,7 @@ const PresenterView = () => {
   const notesRef = useRef<HTMLDivElement>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
-  const recordingIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const recordingIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const videoPreviewRef = useRef<HTMLVideoElement>(null);
 
   const speakerNotes = {

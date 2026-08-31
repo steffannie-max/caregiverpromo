@@ -14,7 +14,7 @@ export const BackgroundMusic = ({ currentSlide }: BackgroundMusicProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [musicMap, setMusicMap] = useState<{ [key: number]: string }>({});
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const fadeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const fadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     fetchMusic();
