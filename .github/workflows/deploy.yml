@@ -46,6 +46,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Wait for legacy branch publisher
+        # GitHub Pages is also running its automatic branch publisher for this
+        # repository. Let it finish first so this built Vite artifact is the
+        # final deployment rather than the raw source tree.
+        run: sleep 45
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
