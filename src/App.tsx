@@ -30,7 +30,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename={basename}>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route
+            path="/"
+            element={isGithubPages ? <Navigate to="/showcase" replace /> : <Index />}
+          />
+          <Route path="/course" element={<Index />} />
           <Route path="/presenter" element={<PresenterView />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/upload-videos" element={<UploadVideos />} />
