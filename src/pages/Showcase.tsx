@@ -15,10 +15,7 @@ import {
   HeartHandshake,
   ShieldCheck,
   Users,
-  Clipboard,
-  Check,
   Play,
-  Mail,
   ArrowRight,
   Sparkles,
 } from "lucide-react";
@@ -152,7 +149,6 @@ const sections = [
   { id: "scenario", label: "Scenario" },
   { id: "reflect", label: "Reflection" },
   { id: "certificate", label: "Certificate" },
-  { id: "assets", label: "Promo kit" },
 ];
 
 const Showcase = () => {
@@ -160,7 +156,6 @@ const Showcase = () => {
   const [scenarioDone, setScenarioDone] = useState(false);
   const [reflection, setReflection] = useState("");
   const [active, setActive] = useState("overview");
-  const [copied, setCopied] = useState<string | null>(null);
 
   const progress = useMemo(() => {
     let done = 1;
@@ -185,15 +180,6 @@ const Showcase = () => {
     });
     return () => observer.disconnect();
   }, []);
-
-  const embedCode = `<iframe src="${window.location.origin}/showcase" width="100%" height="900" style="border:0" title="Caregiver Support Essentials demo"></iframe>`;
-  const emailHtml = `<a href="${window.location.origin}/showcase"><img src="${window.location.origin}${placard}" alt="Caregiver Support Essentials — interactive training demo" width="600" style="max-width:100%;border:0" /></a>`;
-
-  const copy = (key: string, text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(key);
-    setTimeout(() => setCopied(null), 2000);
-  };
 
   return (
     <div className="showcase-theme min-h-screen bg-background">
@@ -249,11 +235,6 @@ const Showcase = () => {
                   Start the demo <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#assets">
-                  <Mail className="mr-2 h-4 w-4" /> Promo kit for email
-                </a>
-              </Button>
             </div>
             <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-6">
               {[
@@ -283,7 +264,7 @@ const Showcase = () => {
                 <Play className="h-4 w-4 text-accent" /> 10-second course teaser
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                Drop this clip or the still placard into an outreach email.
+                A quick preview of the interactive demo.
               </p>
             </div>
           </Card>
@@ -394,54 +375,6 @@ const Showcase = () => {
           <div className="mt-10">
             <Certificate unlocked={quizDone && scenarioDone} />
           </div>
-        </div>
-      </section>
-
-      {/* Promo kit */}
-      <section id="assets" className="mx-auto max-w-5xl px-5 py-16">
-        <h2 className="text-3xl font-bold tracking-tight text-primary md:text-4xl">
-          Promo kit for email
-        </h2>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          A ready placard, a teaser video, and copy-paste snippets for outreach or an LMS page.
-        </p>
-
-        <Card className="mt-8 overflow-hidden">
-          <img
-            src={placard}
-            alt="Caregiver Support Essentials email placard with a teal and amber illustration of hands holding a heart"
-            width={1600}
-            height={848}
-            loading="lazy"
-            className="w-full"
-          />
-        </Card>
-
-        <div className="mt-6 grid gap-4">
-          {[
-            { key: "email", title: "Clickable placard for an email", code: emailHtml },
-            { key: "embed", title: "Embed the demo in a page or LMS", code: embedCode },
-          ].map((s) => (
-            <Card key={s.key} className="p-5">
-              <div className="flex items-start justify-between gap-4">
-                <p className="font-semibold text-foreground">{s.title}</p>
-                <Button size="sm" variant="outline" onClick={() => copy(s.key, s.code)}>
-                  {copied === s.key ? (
-                    <>
-                      <Check className="mr-2 h-4 w-4" /> Copied
-                    </>
-                  ) : (
-                    <>
-                      <Clipboard className="mr-2 h-4 w-4" /> Copy
-                    </>
-                  )}
-                </Button>
-              </div>
-              <pre className="mt-3 overflow-x-auto rounded-lg bg-muted p-4 text-xs leading-relaxed text-muted-foreground">
-                <code>{s.code}</code>
-              </pre>
-            </Card>
-          ))}
         </div>
       </section>
 
