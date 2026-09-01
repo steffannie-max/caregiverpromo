@@ -59,7 +59,7 @@ export const Certificate = ({ unlocked }: { unlocked: boolean }) => {
             <p>Date completed</p>
           </div>
           <div>
-            <p className="font-semibold text-foreground">Steffannie Roache, MSW</p>
+            <p className="font-semibold text-foreground">Steffannie Roache, MS, LMHC, LPC</p>
             <p>Instructor</p>
           </div>
         </div>
