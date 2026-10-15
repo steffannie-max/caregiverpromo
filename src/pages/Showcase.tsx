@@ -225,7 +225,7 @@ const Showcase = () => {
               Caregiver Support Essentials
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-foreground">
-              A working demonstration built for Oregon Care Partners: burnout, boundaries, and
+              A working demonstration for caregivers and care professionals: burnout, boundaries, and
               trauma-informed communication, taught the way adults actually learn — decisions
               first, coaching immediately after.
             </p>
@@ -380,7 +380,7 @@ const Showcase = () => {
 
       <footer className="border-t border-border py-10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 text-sm text-muted-foreground">
-          <p>Sample module by Steffannie Roache, MS, LMHC, LPC — built for Oregon Care Partners review.</p>
+          <p>Sample module by Steffannie Roaché, MS, LMHC, LPC.</p>
           <Link to="/course" className="font-semibold text-primary hover:underline">
             Back to the lenses presentation
           </Link>
